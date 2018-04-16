@@ -1,13 +1,13 @@
 <?php
 return [
     'components' => [
-	    'db' => [
-            'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=192.168.212.100;dbname=kg_development',
-            'username' => 'kg_development',
-            'password' => 'kg_development',
-            'charset' => 'utf8',
-        ],
+	    // 'db' => [
+            // 'class' => 'yii\db\Connection',
+            // 'dsn' => 'mysql:host=192.168.212.100;dbname=kg_development',
+            // 'username' => 'kg_development',
+            // 'password' => 'kg_development',
+            // 'charset' => 'utf8',
+        // ],
 		/*
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',

@@ -12,22 +12,33 @@ return [
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
     'modules' => [
-		//'apidoc1' => 'backend/web/template/apidoc/',	
-		'percobaan' => [
-            'class' => 'backend\percobaan\Modul',
+		'apidoc' => [
+            'class' => 'backend\apidoc\Modul',
         ],
 	],
     'components' => [
-		// 'apidoc' => [
-            // 'backend/views' => '/var/www/apidoc',
-        // ],
-        'request' => [
+		'db' => [
+            'class' => 'yii\db\Connection',
+            'dsn' => 'mysql:host=192.168.212.100;dbname=kg_development',
+            'username' => 'kg_development',
+            'password' => 'kg_development',
+            'charset' => 'utf8',
+        ],
+		'request' => [
             'csrfParam' => '_csrf-backend',
+			'enableCookieValidation' => false,
+            'enableCsrfValidation' => false,
         ],
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
+        ],
+		 'urlManager' => [
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'rules' => [
+            ],
         ],
         'session' => [
             // this is the name of the session cookie used for login on the backend
@@ -54,12 +65,7 @@ return [
                 ],
             ],
         ],
-       'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => [
-            ],
-        ],
+      
     ],
     'params' => $params,
 ];
