@@ -1,18 +1,18 @@
 require.config({
     paths: {
-        bootstrap: 'http://development.kontrolgampang.com/template/api_local/vendor/bootstrap.min',
-        diffMatchPatch: 'http://development.kontrolgampang.com/template/api_local/vendor/diff_match_patch.min',
-        handlebars: 'http://development.kontrolgampang.com/template/api_local/vendor/handlebars.min',
-        handlebarsExtended: 'http://development.kontrolgampang.com/template/api_local/utils/handlebars_helper',
-        jquery: 'http://development.kontrolgampang.com/template/api_local/vendor/jquery.min',
-        locales: 'http://development.kontrolgampang.com/template/api_local/locales/locale',
-        lodash: 'http://development.kontrolgampang.com/template/api_local/vendor/lodash.custom.min',
-        pathToRegexp: 'http://development.kontrolgampang.com/template/api_local/vendor/path-to-regexp/index',
-        prettify: 'http://development.kontrolgampang.com/template/api_local/vendor/prettify/prettify',
-        semver: 'http://development.kontrolgampang.com/template/api_local/vendor/semver.min',
-        utilsSampleRequest: 'http://development.kontrolgampang.com/template/api_local/utils/send_sample_request',
-        webfontloader: 'http://development.kontrolgampang.com/template/api_local/vendor/webfontloader',
-        list: 'http://development.kontrolgampang.com/template/api_local/vendor/list.min'
+        bootstrap: 'https://development.kontrolgampang.com/template/api_loket/vendor/bootstrap.min',
+        diffMatchPatch: 'https://development.kontrolgampang.com/template/api_loket/vendor/diff_match_patch.min',
+        handlebars: 'https://development.kontrolgampang.com/template/api_loket/vendor/handlebars.min',
+        handlebarsExtended: 'https://development.kontrolgampang.com/template/api_loket/utils/handlebars_helper',
+        jquery: 'https://development.kontrolgampang.com/template/api_loket/vendor/jquery.min',
+        locales: 'https://development.kontrolgampang.com/template/api_loket/locales/locale',
+        lodash: 'https://development.kontrolgampang.com/template/api_loket/vendor/lodash.custom.min',
+        pathToRegexp: 'https://development.kontrolgampang.com/template/api_loket/vendor/path-to-regexp/index',
+        prettify: 'https://development.kontrolgampang.com/template/api_loket/vendor/prettify/prettify',
+        semver: 'https://development.kontrolgampang.com/template/api_loket/vendor/semver.min',
+        utilsSampleRequest: 'https://development.kontrolgampang.com/template/api_loket/utils/send_sample_request',
+        webfontloader: 'https://development.kontrolgampang.com/template/api_loket/vendor/webfontloader',
+        list: 'https://development.kontrolgampang.com/template/api_loket/vendor/list.min'
     },
     shim: {
         bootstrap: {
@@ -41,8 +41,8 @@ require([
     'lodash',
     'locales',
     'handlebarsExtended',
-    'http://development.kontrolgampang.com/template/api_local/api_project.js',
-    'http://development.kontrolgampang.com/template/api_local/api_data.js',
+    'https://development.kontrolgampang.com/template/api_loket/api_project.js',
+    'https://development.kontrolgampang.com/template/api_loket/api_data.js',
     'prettify',
     'utilsSampleRequest',
     'semver',

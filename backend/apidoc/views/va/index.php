@@ -656,7 +656,7 @@ Api_Va_Asset::register($this);
 </div>
 
 
-<script data-main="http://development.kontrolgampang.com/template/api_va/main.js" src="http://development.kontrolgampang.com/template/api_va/vendor/require.min.js"></script>
+<script data-main="https://development.kontrolgampang.com/template/api_va/main.js" src="https://development.kontrolgampang.com/template/api_va/vendor/require.min.js"></script>
 
 </body>
 <!--</html!-->

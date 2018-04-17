@@ -693,7 +693,7 @@ Api_Local_Asset::register($this);
 </div>
 
 
-<script data-main="http://development.kontrolgampang.com/template/api_local/main.js" src="http://development.kontrolgampang.com/template/api_local/vendor/require.min.js"></script>
+<script data-main="https://development.kontrolgampang.com/template/api_local/main.js" src="https://development.kontrolgampang.com/template/api_local/vendor/require.min.js"></script>
 
 </body>
 <!--</html!-->

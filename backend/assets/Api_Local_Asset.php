@@ -25,6 +25,8 @@ class Api_Local_Asset extends AssetBundle
 		['template/api_local/vendor/bootstrap.min.css','media' => 'screen'],
 		['template/api_local/vendor/prettify.css','media' => 'screen'],
 		['template/api_local/css/style.css','media' => 'screen, print'],		
+		// ['css/simple-sidebar.css','media' => 'screen, print'],		
+		// ['css/bootstrap.min.css','media' => 'screen, print'],		
 		// ['vendor/bootstrap.min.css', 'media' => 'screen'],
 		// ['vendor/prettify/prettify.css', 'media' => 'screen'],	
 		// ['css/style.css','media' => 'screen, print'],			

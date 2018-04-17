@@ -1,18 +1,18 @@
 require.config({
     paths: {
-        bootstrap: 'http://development.kontrolgampang.com/template/api_ppob/vendor/bootstrap.min',
-        diffMatchPatch: 'http://development.kontrolgampang.com/template/api_ppob/vendor/diff_match_patch.min',
-        handlebars: 'http://development.kontrolgampang.com/template/api_ppob/vendor/handlebars.min',
-        handlebarsExtended: 'http://development.kontrolgampang.com/template/api_ppob/utils/handlebars_helper',
-        jquery: 'http://development.kontrolgampang.com/template/api_ppob/vendor/jquery.min',
-        locales: 'http://development.kontrolgampang.com/template/api_ppob/locales/locale',
-        lodash: 'http://development.kontrolgampang.com/template/api_ppob/vendor/lodash.custom.min',
-        pathToRegexp: 'http://development.kontrolgampang.com/template/api_ppob/vendor/path-to-regexp/index',
-        prettify: 'http://development.kontrolgampang.com/template/api_ppob/vendor/prettify/prettify',
-        semver: 'http://development.kontrolgampang.com/template/api_ppob/vendor/semver.min',
-        utilsSampleRequest: 'http://development.kontrolgampang.com/template/api_ppob/utils/send_sample_request',
-        webfontloader: 'http://development.kontrolgampang.com/template/api_ppob/vendor/webfontloader',
-        list: 'http://development.kontrolgampang.com/template/api_ppob/vendor/list.min'
+        bootstrap: 'https://development.kontrolgampang.com/template/api_ppob/vendor/bootstrap.min',
+        diffMatchPatch: 'https://development.kontrolgampang.com/template/api_ppob/vendor/diff_match_patch.min',
+        handlebars: 'https://development.kontrolgampang.com/template/api_ppob/vendor/handlebars.min',
+        handlebarsExtended: 'https://development.kontrolgampang.com/template/api_ppob/utils/handlebars_helper',
+        jquery: 'https://development.kontrolgampang.com/template/api_ppob/vendor/jquery.min',
+        locales: 'https://development.kontrolgampang.com/template/api_ppob/locales/locale',
+        lodash: 'https://development.kontrolgampang.com/template/api_ppob/vendor/lodash.custom.min',
+        pathToRegexp: 'https://development.kontrolgampang.com/template/api_ppob/vendor/path-to-regexp/index',
+        prettify: 'https://development.kontrolgampang.com/template/api_ppob/vendor/prettify/prettify',
+        semver: 'https://development.kontrolgampang.com/template/api_ppob/vendor/semver.min',
+        utilsSampleRequest: 'https://development.kontrolgampang.com/template/api_ppob/utils/send_sample_request',
+        webfontloader: 'https://development.kontrolgampang.com/template/api_ppob/vendor/webfontloader',
+        list: 'https://development.kontrolgampang.com/template/api_ppob/vendor/list.min'
     },
     shim: {
         bootstrap: {
@@ -41,8 +41,8 @@ require([
     'lodash',
     'locales',
     'handlebarsExtended',
-    'http://development.kontrolgampang.com/template/api_ppob/api_project.js',
-    'http://development.kontrolgampang.com/template/api_ppob/api_data.js',
+    'https://development.kontrolgampang.com/template/api_ppob/api_project.js',
+    'https://development.kontrolgampang.com/template/api_ppob/api_data.js',
     'prettify',
     'utilsSampleRequest',
     'semver',

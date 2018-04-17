@@ -1,18 +1,18 @@
 define([
-    'http://development.kontrolgampang.com/template/api_va/locales/ca.js',
-    'http://development.kontrolgampang.com/template/api_va/locales/de.js',
-    'http://development.kontrolgampang.com/template/api_va/locales/es.js',
-    'http://development.kontrolgampang.com/template/api_va/locales/fr.js',
-    'http://development.kontrolgampang.com/template/api_va/locales/it.js',
-    'http://development.kontrolgampang.com/template/api_va/locales/nl.js',
-    'http://development.kontrolgampang.com/template/api_va/locales/pl.js',
-    'http://development.kontrolgampang.com/template/api_va/locales/pt_br.js',
-    'http://development.kontrolgampang.com/template/api_va/locales/ro.js',
-    'http://development.kontrolgampang.com/template/api_va/locales/ru.js',
-    'http://development.kontrolgampang.com/template/api_va/locales/tr.js',
-    'http://development.kontrolgampang.com/template/api_va/locales/vi.js',
-    'http://development.kontrolgampang.com/template/api_va/locales/zh.js',
-    'http://development.kontrolgampang.com/template/api_va/locales/zh_cn.js'
+    'https://development.kontrolgampang.com/template/api_va/locales/ca.js',
+    'https://development.kontrolgampang.com/template/api_va/locales/de.js',
+    'https://development.kontrolgampang.com/template/api_va/locales/es.js',
+    'https://development.kontrolgampang.com/template/api_va/locales/fr.js',
+    'https://development.kontrolgampang.com/template/api_va/locales/it.js',
+    'https://development.kontrolgampang.com/template/api_va/locales/nl.js',
+    'https://development.kontrolgampang.com/template/api_va/locales/pl.js',
+    'https://development.kontrolgampang.com/template/api_va/locales/pt_br.js',
+    'https://development.kontrolgampang.com/template/api_va/locales/ro.js',
+    'https://development.kontrolgampang.com/template/api_va/locales/ru.js',
+    'https://development.kontrolgampang.com/template/api_va/locales/tr.js',
+    'https://development.kontrolgampang.com/template/api_va/locales/vi.js',
+    'https://development.kontrolgampang.com/template/api_va/locales/zh.js',
+    'https://development.kontrolgampang.com/template/api_va/locales/zh_cn.js'
 ], function() {
     var langId = (navigator.language || navigator.userLanguage).toLowerCase().replace('-', '_');
     var language = langId.substr(0, 2);

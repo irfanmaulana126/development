@@ -657,7 +657,7 @@ Api_Loket_Asset::register($this);
 </div>
 
 
-<script data-main="http://development.kontrolgampang.com/template/api_loket/main.js" src="http://development.kontrolgampang.com/template/api_loket/vendor/require.min.js"></script>
+<script data-main="https://development.kontrolgampang.com/template/api_loket/main.js" src="https://development.kontrolgampang.com/template/api_loket/vendor/require.min.js"></script>
 
 </body>
 <!--</html!-->

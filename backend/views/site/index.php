@@ -14,57 +14,56 @@ $data = $this->render('apidoc/index.html'); */
     <div class="body-content">
 		<div class="row">
 			<div class="col-md-12">
-				<h4 class="page-head-line">Please Login To Enter </h4>
+				<h4 class="page-head-line">README</h4>
 			</div>
 		</div>
         <div class="row">
 			<div class="col-lg-6">
 				<div class="alert alert-info">
-					This is a free bootstrap admin template with basic pages you need to craft your project. 
-					Use this template for free to use for personal and commercial use.
+					Dilarang keras menyebarkan dokomentasi pada web ini, tanpa ada kesepakatan tertentu dari PT. Kogam Artha Sejahtera.
+					User dalam dokomentasi ini sudah di tetapkan untuk fitur-fitur development yang sudah di tentukan.
 					<br />
-					 <strong> Some of its features are given below :</strong>
+					 <strong> Beberapa fitur-fitur yang diberikan di bawah ini :</strong>
 					<ul>
 						<li>
-							Responsive Design Framework Used
+							Dokomentasi Api Kontrol Gampang.
 						</li>
 						<li>
-							Easy to use and customize
+							Dokomentasi Api PPOB.
 						</li>
 						<li>
-							Font awesome icons included
+							Dokomentasi Api Loket.
 						</li>
 						<li>
-							Clean and light code used.
+							Dokomentasi Virtual Akun.
 						</li>
 					</ul>
 				   
 				</div>
 				<div class="alert alert-success">
-					 <strong> Instructions To Use:</strong>
+					 <strong> Instruksi Untuk Digunakan:</strong>
 					<ul>
 						<li>
-						   Lorem ipsum dolor sit amet ipsum dolor sit ame
+						   Harus mendaftarkan IP public yang akan dilakukan untuk development. 
 						</li>
 						<li>
-							 Aamet ipsum dolor sit ame
+						   Akan mendapatkan User dan password untuk login.
 						</li>
 						<li>
-						   Lorem ipsum dolor sit amet ipsum dolor
+						   Mendapatkan Token Authorisasi.
 						</li>
 						<li>
-							 Cpsum dolor sit ame
+						   Melakukan NDA sebelum menjalankan prosess development.
 						</li>
 					</ul>
 				   
 				</div>
-				<p><a class="btn btn-default" href="apidoc/kg">API Documentation &raquo;</a></p>
 			</div>           
             <div>   
               		  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 text-center pad-top">
 						  <div class="div-square">
 								<a href="/apidoc/kg" >
-									<i class="fa fa-circle-o-notch fa-5x"></i>
+									<i class="fa fa-key fa-5x"></i>
 									<h4>KG API</h4>
 								</a>
 						  </div>                    
@@ -89,7 +88,7 @@ $data = $this->render('apidoc/index.html'); */
 					  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 text-center pad-top">
 						  <div class="div-square">
 							   <a href="/apidoc/va" >
-									<i class="fa fa-users fa-5x"></i>
+									<i class="fa fa-money fa-5x"></i>
 									<h4>VA</h4>
 								</a>
 						  </div>
@@ -97,7 +96,7 @@ $data = $this->render('apidoc/index.html'); */
 					  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 text-center pad-top">
 						  <div class="div-square">
 							   <a href="blank.html" >
-									<i class="fa fa-key fa-5x"></i>
+									<i class="fa fa-user fa-5x"></i>
 									<h4>Admin </h4>
 								</a>
 						  </div>

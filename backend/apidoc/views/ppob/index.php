@@ -655,7 +655,7 @@ Api_Ppob_Asset::register($this);
 </div>
 
 
-<script data-main="http://development.kontrolgampang.com/template/api_ppob/main.js" src="http://development.kontrolgampang.com/template/api_ppob/vendor/require.min.js"></script>
+<script data-main="https://development.kontrolgampang.com/template/api_ppob/main.js" src="https://development.kontrolgampang.com/template/api_ppob/vendor/require.min.js"></script>
 
 </body>
 <!--</html!-->
