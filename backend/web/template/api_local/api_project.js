@@ -1,13 +1,13 @@
 define({
-  "name": "Dokomentasi Kontrol Gampang",
+  "name": "",
   "version": "0.0.0",
-  "description": "apidoc Kogam Artha Sejahtera",
+  "description": "",
   "title": "Apidoc Kogam",
   "url": "https://production.kontrolgampang.com",
   "sampleUrl": "https://production.kontrolgampang.com",
   "header": {
     "title": "PENGHANTAR",
-    "content": "<p>#Dokumentasi Kontrol Gampang</p>\n<p>In your projects &quot;package.json&quot; you can set &quot;apidoc.header&quot; with a title and a filename to include this file into your documentation.</p>\n<p>This example attempts to integrate &quot;header.md&quot; and &quot;footer.md&quot;.</p>\n<pre><code>{\n  &quot;name&quot;: &quot;example&quot;,\n  &quot;version&quot;: &quot;0.3.0&quot;,\n  &quot;description&quot;: &quot;apidoc example project.&quot;,\n  &quot;apidoc&quot;: {\n    &quot;header&quot;: {\n      &quot;title&quot;: &quot;My own header title 1&quot;,\n      &quot;filename&quot;: &quot;header.md&quot;\n    },\n    &quot;footer&quot;: {\n      &quot;title&quot;: &quot;My own footer title&quot;,\n      &quot;filename&quot;: &quot;footer.md&quot;\n    }\n  }\n}\n</code></pre>\n"
+    "content": "<p>#API Kontrol Gampang</p>\n<div class=\"text-center\"><img src='https://image.kontrolgampang.com/brand/logo-dokumentasi.png' alt='Mountain View' height=\"100\"></div></br>\nDokumentasi Api Kontrol Gampang & tools Api Respon ini, merupakan panduan yang harus di ikuti dan diterapkan kepada semua development IT Kontrol Gampang sebagai standart development aplikasi.\njika menemukan kesulitan atau ada beberapa Api yang harus di ubah, selayaknya melakukan open tiket untuk melakukan perubahan untuk meningkatkan versi yang lebih baik dan stabil kedepanya."
   },
   "footer": {
     "title": "PRIVASI & KEAMANAN",
@@ -21,7 +21,7 @@ define({
   "apidoc": "0.3.0",
   "generator": {
     "name": "apidoc",
-    "time": "2018-04-16T15:39:31.188Z",
+    "time": "2018-04-17T07:47:37.107Z",
     "url": "http://apidocjs.com",
     "version": "0.17.6"
   }

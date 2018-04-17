@@ -9,6 +9,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use common\widgets\Alert;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 ?>
@@ -29,7 +30,8 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'My Company',
+        //'brandLabel' =>'<img src="'.Yii::$app->request->baseUrl.'/logo-dashboard3.png" class="navbar-header page-scroll" style="width:110px; height:40px"/>',
+        'brandLabel' =>'PT. KOGAM ARTHA SEJAHTERA',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',

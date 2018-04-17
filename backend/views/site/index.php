@@ -72,25 +72,25 @@ $data = $this->render('apidoc/index.html'); */
 					 
 					  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 text-center pad-top">
 						  <div class="div-square">
-							   <a href="blank.html" >
+							   <a href="/apidoc/ppob" >
 									<i class="fa fa-envelope-o fa-5x"></i>
-									<h4>Mail Box</h4>
+									<h4>PPOB</h4>
 								</a>
 						  </div>                    
 					  </div>
 					  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 text-center pad-top">
 						  <div class="div-square">
-							   <a href="blank.html" >
+							   <a href="/apidoc/loket" >
 									<i class="fa fa-lightbulb-o fa-5x"></i>
-									<h4>New Issues</h4>
+									<h4>Loket</h4>
 								</a>
 						  </div>
 					  </div>
 					  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 text-center pad-top">
 						  <div class="div-square">
-							   <a href="blank.html" >
+							   <a href="/apidoc/va" >
 									<i class="fa fa-users fa-5x"></i>
-									<h4>See Users</h4>
+									<h4>VA</h4>
 								</a>
 						  </div>
 					  </div>

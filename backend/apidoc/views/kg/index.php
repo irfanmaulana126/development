@@ -1,7 +1,7 @@
 <?php
 use yii\web\View;
-use backend\assets\LocalApidoc_Head;
-LocalApidoc_Head::register($this);
+use backend\assets\Api_Local_Asset;
+Api_Local_Asset::register($this);
 // use backend\assets\LocalApidoc_Begin;
 // LocalApidoc_Begin::register($this);
 // use backend\assets\AppAssetApidocEnd;
