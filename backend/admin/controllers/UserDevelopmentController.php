@@ -43,7 +43,7 @@ class UserDevelopmentController extends Controller
                return $this->goHome(); 
            } else {	
                //add Session.
-                Yii::$app->session->set('userSessionTimeout', time() + Yii::$app->params['user.passwordResetTokenExpire']);
+                Yii::$app->session->set('userSessionTimeout', time() + Yii::$app->params['sessionTimeoutSeconds']);
                 return true;
             }
         }else{
@@ -157,7 +157,22 @@ class UserDevelopmentController extends Controller
             ]);
         }
     }
+    public function actionChange($id)
+    {
+        $model =  UserDevelopment::findOne($id);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->Password = $model->newPassword;
+            if ($model->save(false)) {
+                Yii::$app->session->setFlash('success', "Change Password Berhasil");
+                return $this->redirect(['index']);   
+            }
+        return $this->redirect(['index']);
+        }
 
+        return $this->renderAjax('_form_change', [
+            'model' => $model,
+        ]);
+    }
     /**
      * Deletes an existing UserDevelopment model.
      * If deletion is successful, the browser will be redirected to the 'index' page.

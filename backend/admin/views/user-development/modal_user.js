@@ -33,3 +33,11 @@ $(document).on('click','#open-ticket', function(ehead){
 	//.load(ehead.target.value);
 	.load($(this).attr('value'));
 });
+$.fn.modal.Constructor.prototype.enforceFocus = function(){};
+//$.fn.modal.prototype.constructor.Constructor.DEFAULTS.backdrop = 'static';	
+$(document).on('click','#change', function(ehead){ 			  
+	$('#change-modal').modal('show')
+	.find('#change-content').html('<i class=\"fa fa-2x fa-spinner fa-spin\"></i>')
+	//.load(ehead.target.value);
+	.load($(this).attr('value'));
+});

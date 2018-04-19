@@ -1,6 +1,9 @@
 <?php
 
 use kartik\detail\DetailView;
+if (Yii::$app->user->identity->username=='superadmin') {
+    $tombo=tombolCreateModul($dataProvider);
+}
 
 echo DetailView::widget([
             'id'=>'dv-info',
@@ -9,7 +12,7 @@ echo DetailView::widget([
             'hAlign'=>'left',
             'hover'=>true,
             'panel'=>[
-                'heading'=>'<b>Detail Profile</b>',
+                'heading'=>'<div class="pull-right">'.$tombo.' '.tombolChange($dataProvider).'</div><b>Detail Profile</b>',
                 'type'=>DetailView::TYPE_INFO,
             ],
             'mode'=>DetailView::MODE_VIEW,

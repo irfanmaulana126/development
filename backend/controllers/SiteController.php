@@ -70,7 +70,7 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
-        Yii::$app->session->set('userSessionTimeout', time() + Yii::$app->params['user.passwordResetTokenExpire']);
+        Yii::$app->session->set('userSessionTimeout', time() + Yii::$app->params['sessionTimeoutSeconds']);
         // print_r(Yii::$app->params);die();
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();

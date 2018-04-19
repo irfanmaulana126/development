@@ -22,6 +22,9 @@ use Yii;
  */
 class UserDevelopment extends \yii\db\ActiveRecord
 {
+    public $newPassword;
+    public $newPasswordConfirm;
+    public $currentPassword;
     /**
      * @inheritdoc
      */
@@ -39,6 +42,13 @@ class UserDevelopment extends \yii\db\ActiveRecord
             [['username', 'auth_key', 'password_hash', 'email', 'created_at', 'updated_at'], 'required'],
             [['status', 'created_at', 'updated_at'], 'integer'],
             [['avatar', 'avatarImage'], 'string'],
+            [['newPassword','currentPassword','newPasswordConfirm'],'required'],
+            // [['currentPassword'],'validateCurrentPassword'],
+
+            [['newPassword','newPasswordConfirm'],'string','min'=>6],
+            [['newPassword','newPasswordConfirm'],'filter','filter'=>'trim'],
+            [['newPasswordConfirm'],'compare','compareAttribute'=>'newPassword','message'=>'Password do not match'],
+            
             [['username', 'password_hash', 'password_reset_token', 'email'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],
             [['TEMPLATE'], 'string', 'max' => 100],
@@ -64,5 +74,31 @@ class UserDevelopment extends \yii\db\ActiveRecord
             'TEMPLATE' => 'Template',
             'avatarImage' => 'Avatar Image',
         ];
+    }
+    public function validateCurrentPassword()
+    {
+       if(!$this->verifyPassword($this->currentPassword)){
+           $this->addError("currentPassword","current Password incorrect");
+       }
+    }
+    /**
+     * Validates password
+     *
+     * @param string $password password to validate
+     * @return bool if password provided is valid for current user
+     */
+    public function validatePassword($password)
+    {
+        return Yii::$app->security->validatePassword($password, $this->password_hash);
+    }
+
+    /**
+     * Generates password hash from password and sets it to the model
+     *
+     * @param string $password
+     */
+    public function setPassword($password)
+    {
+        $this->password_hash = Yii::$app->security->generatePasswordHash($password);
     }
 }

@@ -39,7 +39,7 @@ class AppDetailKtgController extends Controller
                return $this->goHome(); 
            } else {	
                //add Session.
-                Yii::$app->session->set('userSessionTimeout', time() + Yii::$app->params['user.passwordResetTokenExpire']);
+                Yii::$app->session->set('userSessionTimeout', time() + Yii::$app->params['sessionTimeoutSeconds']);
                 return true;
             }
         }else{

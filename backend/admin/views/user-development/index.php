@@ -30,9 +30,6 @@ $gridview=$this->render('grid_view',[
 ?>
 <div class="user-development-index">
 
-    <div class="pull-right">
-        <?=tombolCreateModul($dataProvider)?>
-    </div>
     <h1><?= Html::encode($this->title) ?></h1>
     <?php
         echo $detailview;

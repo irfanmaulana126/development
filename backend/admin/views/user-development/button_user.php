@@ -64,11 +64,23 @@ function tombolCreateModul($model){
     $options1 = [
         'value'=>url::to(['/admin/user-development/create-modul','id' => $model['id']]),
         'id'=>'create-modul',
-        'class'=>"btn btn-success",
+        'class'=>"btn btn-success btn-xs",
     ];
     $icon1 = '
     <span class="fa fa-credit-card"></span>
     ';      
+    $label1 = $icon1 . '  ' . $title1;
+    $content = Html::button($label1,$options1);		
+    return $content;
+}
+function tombolChange($model){
+    $title1 = Yii::t('app',' Chnage Password');
+    $options1 = [
+        'value'=>url::to(['/admin/user-development/change','id' => $model['id']]),
+        'id'=>'change',
+        'class'=>"btn btn-warning btn-xs",    
+    ];
+    $icon1 = '<span class="fa fa-key fa-lg"></span>';      
     $label1 = $icon1 . '  ' . $title1;
     $content = Html::button($label1,$options1);		
     return $content;
