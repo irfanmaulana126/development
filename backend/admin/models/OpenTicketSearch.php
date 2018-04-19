@@ -5,28 +5,26 @@ namespace backend\admin\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\admin\models\AppDetailKtg;
+use backend\admin\models\OpenTicket;
 
 /**
- * AppDetailKtgSearch represents the model behind the search form of `backend\admin\models\AppDetailKtg`.
+ * OpenTicketSearch represents the model behind the search form of `backend\admin\models\OpenTicket`.
  */
-class AppDetailKtgSearch extends AppDetailKtg
+class OpenTicketSearch extends OpenTicket
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
         return [
             [['ID', 'STATUS'], 'integer'],
-            [['KTG_NM'], 'safe'],
-            [['MODUL_NM'],'unique', 'message'=>'This issue already exists.'],
-            [['KODE_KTG', 'KTG_NM', 'MODUL_NM', 'KODE_USER', 'USERNAME', 'TGL1', 'TGL2', 'DESKRIPSI'], 'safe'],
+            [['KODE_MODUL', 'MODUL_NM', 'KODE_USER', 'USERNAME', 'TGL1', 'TGL2', 'DESKRIPSI', 'API_KEY'], 'safe'],
         ];
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function scenarios()
     {
@@ -43,7 +41,7 @@ class AppDetailKtgSearch extends AppDetailKtg
      */
     public function search($params)
     {
-        $query = AppDetailKtg::find();
+        $query = OpenTicket::find();
 
         // add conditions that should always apply here
 
@@ -67,12 +65,12 @@ class AppDetailKtgSearch extends AppDetailKtg
             'STATUS' => $this->STATUS,
         ]);
 
-        $query->andFilterWhere(['like', 'KODE_KTG', $this->KODE_KTG])
-            ->andFilterWhere(['like', 'KTG_NM', $this->KTG_NM])
+        $query->andFilterWhere(['like', 'KODE_MODUL', $this->KODE_MODUL])
             ->andFilterWhere(['like', 'MODUL_NM', $this->MODUL_NM])
             ->andFilterWhere(['like', 'KODE_USER', $this->KODE_USER])
             ->andFilterWhere(['like', 'USERNAME', $this->USERNAME])
-            ->andFilterWhere(['like', 'DESKRIPSI', $this->DESKRIPSI]);
+            ->andFilterWhere(['like', 'DESKRIPSI', $this->DESKRIPSI])
+            ->andFilterWhere(['like', 'API_KEY', $this->API_KEY]);
 
         return $dataProvider;
     }

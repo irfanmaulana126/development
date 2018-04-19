@@ -3,19 +3,19 @@
 namespace backend\admin\controllers;
 
 use Yii;
-use backend\admin\models\AppDetailKtg;
-use backend\admin\models\AppDetailKtgSearch;
+use backend\admin\models\OpenTicket;
+use backend\admin\models\OpenTicketSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * AppDetailKtgController implements the CRUD actions for AppDetailKtg model.
+ * OpenTicketController implements the CRUD actions for OpenTicket model.
  */
-class AppDetailKtgController extends Controller
+class OpenTicketController extends Controller
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function behaviors()
     {
@@ -28,32 +28,14 @@ class AppDetailKtgController extends Controller
             ],
         ];
     }
-    public function beforeAction($action){
-        $modulIndentify=4; //OUTLET
-       // Check only when the user is logged in.
-       // Author piter Novian [ptr.nov@gmail.com].
-       if (!Yii::$app->user->isGuest){          
-           if (Yii::$app->session['userSessionTimeout']< time() ) {
-               // timeout
-               Yii::$app->user->logout();
-               return $this->goHome(); 
-           } else {	
-               //add Session.
-                Yii::$app->session->set('userSessionTimeout', time() + Yii::$app->params['user.passwordResetTokenExpire']);
-                return true;
-            }
-        }else{
-           Yii::$app->user->logout();
-           return $this->goHome(); 
-       }
-   }
+
     /**
-     * Lists all AppDetailKtg models.
+     * Lists all OpenTicket models.
      * @return mixed
      */
     public function actionIndex()
-    { 
-        $searchModel = new AppDetailKtgSearch();
+    {
+        $searchModel = new OpenTicketSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -63,9 +45,10 @@ class AppDetailKtgController extends Controller
     }
 
     /**
-     * Displays a single AppDetailKtg model.
+     * Displays a single OpenTicket model.
      * @param string $id
      * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
     {
@@ -75,28 +58,29 @@ class AppDetailKtgController extends Controller
     }
 
     /**
-     * Creates a new AppDetailKtg model.
+     * Creates a new OpenTicket model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new AppDetailKtg();
+        $model = new OpenTicket();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->ID]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
         }
+
+        return $this->render('create', [
+            'model' => $model,
+        ]);
     }
 
     /**
-     * Updates an existing AppDetailKtg model.
+     * Updates an existing OpenTicket model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param string $id
      * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionUpdate($id)
     {
@@ -104,18 +88,19 @@ class AppDetailKtgController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->ID]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
         }
+
+        return $this->render('update', [
+            'model' => $model,
+        ]);
     }
 
     /**
-     * Deletes an existing AppDetailKtg model.
+     * Deletes an existing OpenTicket model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param string $id
      * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionDelete($id)
     {
@@ -125,18 +110,18 @@ class AppDetailKtgController extends Controller
     }
 
     /**
-     * Finds the AppDetailKtg model based on its primary key value.
+     * Finds the OpenTicket model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param string $id
-     * @return AppDetailKtg the loaded model
+     * @return OpenTicket the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = AppDetailKtg::findOne($id)) !== null) {
+        if (($model = OpenTicket::findOne($id)) !== null) {
             return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
         }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 }

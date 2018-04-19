@@ -5,6 +5,10 @@ namespace backend\admin\controllers;
 use Yii;
 use backend\admin\models\UserDevelopment;
 use backend\admin\models\UserDevelopmentSearch;
+use backend\admin\models\AppDetailKtg;
+use backend\admin\models\AppDetailKtgSearch;
+use backend\admin\models\OpenTicket;
+use backend\admin\models\OpenTicketSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -28,7 +32,25 @@ class UserDevelopmentController extends Controller
             ],
         ];
     }
-
+    public function beforeAction($action){
+        $modulIndentify=4; //OUTLET
+       // Check only when the user is logged in.
+       // Author piter Novian [ptr.nov@gmail.com].
+       if (!Yii::$app->user->isGuest){          
+           if (Yii::$app->session['userSessionTimeout']< time() ) {
+               // timeout
+               Yii::$app->user->logout();
+               return $this->goHome(); 
+           } else {	
+               //add Session.
+                Yii::$app->session->set('userSessionTimeout', time() + Yii::$app->params['user.passwordResetTokenExpire']);
+                return true;
+            }
+        }else{
+           Yii::$app->user->logout();
+           return $this->goHome(); 
+       }
+   }
     /**
      * Lists all UserDevelopment models.
      * @return mixed
@@ -36,10 +58,13 @@ class UserDevelopmentController extends Controller
     public function actionIndex()
     {        
         $user = (empty(Yii::$app->user->identity->id)) ? '' : Yii::$app->user->identity->id;
-        $dataProvider = UserDevelopmentSearch::findOne(['id'=>$user]);
-
+        $dataProvider = UserDevelopmentSearch::findOne(['id'=>$user]);        
+        $searchModelKtg = new AppDetailKtgSearch();
+        $dataProviderKtg = $searchModelKtg->search(Yii::$app->request->queryParams);
         return $this->render('index', [
             'dataProvider' => $dataProvider,
+            'dataProviderKtg' => $dataProviderKtg,
+            'searchModelKtg' => $searchModelKtg,
         ]);
     }
 
@@ -88,6 +113,47 @@ class UserDevelopmentController extends Controller
         } else {
             return $this->render('update', [
                 'model' => $model,
+            ]);
+        }
+    }
+
+    public function actionCreateModul($id)
+    {
+        $model = new AppDetailKtg;
+
+        if ($model->load(Yii::$app->request->post())) {
+            $model->KODE_USER=$id;
+            // print_r($model);die();
+            $model->save();
+            return $this->redirect(['index']);
+        } else {
+            return $this->renderAjax('_form_create_modul', [
+                'model' => $model,
+            ]);
+        }
+    }
+    public function actionViewModul($id)
+    {
+        $model = AppDetailKtg::findOne($id);
+        return $this->renderAjax('view_modul', [
+            'model' => $model,
+        ]);
+    }
+    public function actionOpenTicket($id)
+    {
+        $model = new OpenTicket;
+        $data = AppDetailKtg::findOne($id);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->KODE_MODUL=$id;
+            $model->KODE_USER=Yii::$app->user->identity->id;
+            $model->API_KEY=Yii::$app->user->identity->auth_key;
+            // print_r($model);die();
+            $model->save(false);
+            return $this->redirect(['index']);
+        } else {
+            return $this->renderAjax('_form_open_ticket', [
+                'model' => $model,
+                'data' => $data,
             ]);
         }
     }

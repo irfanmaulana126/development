@@ -95,7 +95,7 @@ $data = $this->render('apidoc/index.html'); */
 					  </div>
 					  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 text-center pad-top">
 						  <div class="div-square">
-							   <a href="/admin/" >
+							   <a href="/admin/user-development" >
 									<i class="fa fa-user fa-5x"></i>
 									<h4>Admin </h4>
 								</a>

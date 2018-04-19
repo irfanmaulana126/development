@@ -3,9 +3,9 @@
 namespace backend\admin\models;
 
 use Yii;
-use backend\admin\models\AppDetailKtg;
+
 /**
- * This is the model class for table "app_detail_ktg".
+ * This is the model class for table "open_ticket".
  *
  * @property string $ID
  * @property string $KODE_KTG
@@ -17,41 +17,40 @@ use backend\admin\models\AppDetailKtg;
  * @property string $TGL2
  * @property string $DESKRIPSI
  * @property int $STATUS 0=pending;1=success;2=finish;
+ * @property string $API_KEY
  */
-class AppDetailKtg extends \yii\db\ActiveRecord
+class OpenTicket extends \yii\db\ActiveRecord
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'app_detail_ktg';
+        return 'open_ticket';
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['TGL1', 'TGL2'], 'required'],
+            [['TGL1', 'TGL2'], 'safe'],
             [['DESKRIPSI'], 'string'],
             [['STATUS'], 'integer'],
-            [['MODUL_NM'], 'unique', 'skipOnError' => true, 'targetClass' => AppDetailKtg::className(), 'targetAttribute' => ['MODUL_NM' => 'MODUL_NM']],
-            [['MODUL_NM'],'required'],
-            [['KODE_KTG', 'KTG_NM', 'MODUL_NM', 'KODE_USER', 'USERNAME'], 'string', 'max' => 255],
+            [['KODE_MODUL', 'MODUL_NM', 'KODE_USER', 'USERNAME'], 'string', 'max' => 255],
+            [['API_KEY'], 'string', 'max' => 50],
         ];
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {
         return [
             'ID' => 'ID',
-            'KODE_KTG' => 'Kode  Ktg',
-            'KTG_NM' => 'Ktg  Nm',
+            'KODE_MODUL' => 'Kode  modul',
             'MODUL_NM' => 'Modul  Nm',
             'KODE_USER' => 'Kode  User',
             'USERNAME' => 'Username',
@@ -59,6 +58,7 @@ class AppDetailKtg extends \yii\db\ActiveRecord
             'TGL2' => 'Tgl2',
             'DESKRIPSI' => 'Deskripsi',
             'STATUS' => 'Status',
+            'API_KEY' => 'Api  Key',
         ];
     }
 }
