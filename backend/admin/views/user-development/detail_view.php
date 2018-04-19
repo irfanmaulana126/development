@@ -1,8 +1,10 @@
 <?php
 
 use kartik\detail\DetailView;
-if (Yii::$app->user->identity->username=='superadmin') {
+if (!empty(Yii::$app->user->identity->username)=='superadmin') {
     $tombo=tombolCreateModul($dataProvider);
+}else{
+    $tombo='';
 }
 
 echo DetailView::widget([

@@ -19,10 +19,13 @@ echo $this->render('button_user');
 echo $this->render('modal_user');
 // print_r($dataProvider->getModels);
 // die();
-
+if (!empty($dataProvider)) {
 $detailview=$this->render('detail_view',[
     'dataProvider' => $dataProvider,
 ]);
+}else{
+    $detailview='';
+}
 $gridview=$this->render('grid_view',[    
     'dataProviderKtg' => $dataProviderKtg,
     'searchModelKtg' => $searchModelKtg,
@@ -32,7 +35,9 @@ $gridview=$this->render('grid_view',[
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php
+    if (!empty($detailview)) {
         echo $detailview;
+    }
         echo $gridview;
     ?>
 </div>

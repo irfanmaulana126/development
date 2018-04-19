@@ -1,5 +1,5 @@
 <?php
 return [
     'adminEmail' => 'admin@example.com',
-    'sessionTimeoutSeconds' =>'1800'
+    'sessionTimeoutSeconds' =>1800
 ];
