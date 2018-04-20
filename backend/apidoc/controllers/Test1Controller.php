@@ -77,7 +77,26 @@ class Test1Controller extends \yii\rest\ActiveController
 					]		 
 			], */
         ]);		
-    }
+	}
+	public function beforeAction($action){
+        $modulIndentify=4; //OUTLET
+       // Check only when the user is logged in.
+       // Author piter Novian [ptr.nov@gmail.com].
+       if (!Yii::$app->user->isGuest){          
+           if (Yii::$app->session['userSessionTimeout']< time() ) {
+               // timeout
+               Yii::$app->user->logout();
+               return $this->goHome(); 
+           } else {	
+               //add Session.
+                Yii::$app->session->set('userSessionTimeout', time() + Yii::$app->params['sessionTimeoutSeconds']);
+                return true;
+            }
+        }else{
+           Yii::$app->user->logout();
+           return $this->goHome(); 
+       }
+   }
     public function actionTest()
     {
         return ['field1', 'field2'];
