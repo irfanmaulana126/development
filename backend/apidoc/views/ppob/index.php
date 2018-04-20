@@ -2,7 +2,15 @@
 use yii\web\View;
 use backend\assets\Api_Ppob_Asset;
 Api_Ppob_Asset::register($this);
+
+	
 ?>
+<!--
+<head>
+   <meta http-equiv="Content-Security-Policy" content="default-src https:; script-src https: 'unsafe-inline'; style-src https: 'unsafe-inline'"> 
+</head>
+!-->
+
 <script id="template-sidenav" type="text/x-handlebars-template">
 <nav id="scrollingNav">
   <div class="sidenav-search">
