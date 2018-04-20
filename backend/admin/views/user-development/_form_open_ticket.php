@@ -36,12 +36,12 @@ $detailview=$this->render('view_modul',[
                             "endDate" => $data->TGL2,
                             'style'=>'border-radius: 0px 5px 5px 0px;'
                         ]
-                    ]) ?>
+                    ])->label('DUE DATE') ?>
 
     <?= $form->field($model, 'DESKRIPSI')->widget(CKEditor::className(), [
         'options' => ['rows' => 6],
         'preset' => 'edvance'
-    ]) ?>
+    ])->label('DESKRIPSI') ?>
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>

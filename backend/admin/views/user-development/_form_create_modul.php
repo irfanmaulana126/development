@@ -24,16 +24,16 @@ use dosamigos\ckeditor\CKEditor;
             'pluginOptions' => [
                 'allowClear' => true
             ], 
-        ]) ?>
+        ])->label('KATEGORI') ?>
 
-    <?= $form->field($model, 'MODUL_NM')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'MODUL_NM')->textInput(['maxlength' => true])->label('MODUL') ?>
 
     <?php
     $date1=date('Y-m-d');
     echo $form->field($model, 'TGL1')->textInput()->widget(DatePicker::classname(), [                    
                     'attribute2' => 'TGL2',
                         'options' => ['placeholder' => 'Tanggal Awal','value'=>$date1],
-                        'options2' => ['placeholder' => 'Tanggal Akhir'],
+                        'options2' => ['placeholder' => 'END'],
                         'type' => DatePicker::TYPE_RANGE,
                         'form' => $form,
                         'pluginOptions' => [
@@ -42,12 +42,12 @@ use dosamigos\ckeditor\CKEditor;
                             "startDate" => $date1,
                             'style'=>'border-radius: 0px 5px 5px 0px;'
                         ]
-                    ]) ?>
+                    ])->label('DUE DATE') ?>
 
     <?= $form->field($model, 'DESKRIPSI')->widget(CKEditor::className(), [
         'options' => ['rows' => 6],
         'preset' => 'edvance'
-    ]) ?>
+    ])->label('DESKRIPSI') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

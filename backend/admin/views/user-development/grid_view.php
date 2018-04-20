@@ -18,24 +18,28 @@ $this->registerCss("
 		],
 		[
 			'attribute'=>'KODE_KTG',
+			'label'=>'KODE KATEGORI',
 			'filterType'=>true,
 			'hAlign'=>'left',
 			'vAlign'=>'middle',	
 		],		
 		[
 			'attribute'=>'KTG_NM',
+			'label'=>'NAMA KATEGORI',
 			'filterType'=>true,
 			'hAlign'=>'left',
 			'vAlign'=>'middle',		
 		],		
 		[
 			'attribute'=>'MODUL_NM',
+			'label'=>'MODUL',
 			'filterType'=>true,
 			'hAlign'=>'left',
 			'vAlign'=>'middle',		
 		],				
 		[
 			'attribute'=>'TGL1',
+			'label'=>'START',
 			'filterType'=>true,
 			'hAlign'=>'left',
 			'vAlign'=>'middle',
@@ -52,7 +56,7 @@ $this->registerCss("
 		],
 		[
 			'attribute'=>'TGL2',
-			'label'=>'TGL AKHIR',
+			'label'=>'END',
 			'filterType'=>true,
 			'hAlign'=>'left',
 			'vAlign'=>'middle',
@@ -69,6 +73,7 @@ $this->registerCss("
         ],
         [
 			'attribute'=>'DESKRIPSI',
+			'label'=>'DESKRIPSI',
 			'filterType'=>true,
 			'hAlign'=>'left',
 			'vAlign'=>'middle',

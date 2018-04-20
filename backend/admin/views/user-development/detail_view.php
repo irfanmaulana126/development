@@ -25,6 +25,7 @@ echo DetailView::widget([
                     'columns' => [
                         [
                             'attribute'=>'username',
+                            'label'=>'USERNAME',
                             'value'=>(empty($dataProvider['username']))?'':$dataProvider['username'],
                             'enableEditMode'=>false,
                             'displayOnly'=>true,
@@ -32,6 +33,7 @@ echo DetailView::widget([
                         ],
                         [
                             'attribute'=>'auth_key',
+                            'label'=>'AUTH KEY',
                             'value'=>(empty($dataProvider['auth_key']))?'':$dataProvider['auth_key'],
                             'enableEditMode'=>false,
                             'displayOnly'=>true,
@@ -43,6 +45,7 @@ echo DetailView::widget([
                     'columns' => [
                         [
                             'attribute'=>'email',
+                            'label'=>'EMAIL',
                             'value'=>(empty($dataProvider['email']))?'':$dataProvider['email'],
                             'enableEditMode'=>false,
                             'displayOnly'=>true,
@@ -50,6 +53,7 @@ echo DetailView::widget([
                         ],
                         [
                             'attribute'=>'status',
+                            'label'=>'STATUS',
                             'value'=>(empty($dataProvider['status']))?'':$dataProvider['status'],
                             'enableEditMode'=>false,
                             'displayOnly'=>true,
@@ -61,6 +65,7 @@ echo DetailView::widget([
                     'columns' => [
                         [
                             'attribute'=>'password_hash',
+                            'label'=>'PASSWORD HASH',
                             'value'=>(empty($dataProvider['password_hash']))?'':$dataProvider['password_hash'],
                             'enableEditMode'=>false,
                             'displayOnly'=>true,
@@ -72,6 +77,7 @@ echo DetailView::widget([
                     'columns' => [
                         [
                             'attribute'=>'password_reset_token',
+                            'label'=>'TOKEN REST PASSWORD',
                             'value'=>(empty($dataProvider['password_reset_token']))?'':$dataProvider['password_reset_token'],
                             'enableEditMode'=>false,
                             'displayOnly'=>true,

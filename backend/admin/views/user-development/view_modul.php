@@ -23,6 +23,7 @@ echo DetailView::widget([
                     'columns' => [
                         [
                             'attribute'=>'KODE_KTG',
+                            'label'=>'KODE KATEGORI',
                             'value'=>(empty($model['KODE_KTG']))?'':$model['KODE_KTG'],
                             'enableEditMode'=>false,
                             'displayOnly'=>true,
@@ -30,6 +31,7 @@ echo DetailView::widget([
                         ],
                         [
                             'attribute'=>'KTG_NM',
+                            'label'=>'KATEGORI',
                             'value'=>(empty($model['KTG_NM']))?'':$model['KTG_NM'],
                             'enableEditMode'=>false,
                             'displayOnly'=>true,
@@ -41,6 +43,7 @@ echo DetailView::widget([
                     'columns' => [
                         [
                             'attribute'=>'MODUL_NM',
+                            'label'=>'MODUL',
                             'value'=>(empty($model['MODUL_NM']))?'':$model['MODUL_NM'],
                             'enableEditMode'=>false,
                             'displayOnly'=>true,
@@ -48,6 +51,7 @@ echo DetailView::widget([
                         ],
                         [
                             'attribute'=>'STATUS',
+                            'label'=>'STATUS',
                             'value'=>(empty($model['STATUS']))?'':$model['STATUS'],
                             'enableEditMode'=>false,
                             'displayOnly'=>true,
@@ -59,7 +63,7 @@ echo DetailView::widget([
                     'columns' => [
                         [
                             'attribute'=>'TGL1',
-                            'label'=>'Tanggal Awal',
+                            'label'=>'START',
                             'value'=>(empty($model['TGL1']))?'':$model['TGL1'],
                             'enableEditMode'=>false,
                             'displayOnly'=>true,
@@ -67,7 +71,7 @@ echo DetailView::widget([
                         ],
                         [
                             'attribute'=>'TGL2',
-                            'label'=>'Tanggal Akhir',
+                            'label'=>'END',
                             'value'=>(empty($model['TGL2']))?'':$model['TGL2'],
                             'enableEditMode'=>false,
                             'displayOnly'=>true,
@@ -79,6 +83,7 @@ echo DetailView::widget([
                     'columns' => [
                         [
                             'attribute'=>'DESKRIPSI',
+                            'label'=>'DESKRIPSI',
                             'value'=>(empty($model['DESKRIPSI']))?'':$model['DESKRIPSI'],
                             'enableEditMode'=>false,
                             'displayOnly'=>true,
