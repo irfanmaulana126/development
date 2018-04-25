@@ -117,6 +117,14 @@ $data = $this->render('apidoc/index.html'); */
 								</a>
 						  </div>
 					  </div>
+					  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 text-center pad-top">
+						  <div class="div-square">
+							   <a href="/qualitycontrol/open-ticket" >
+									<i class="fa fa-bug fa-5x"></i>
+									<h4>QA / QC</h4>
+								</a>
+						  </div>
+					  </div>
 			</div>
         </div>
 

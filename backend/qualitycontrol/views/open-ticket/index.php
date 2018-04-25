@@ -1,15 +1,26 @@
 <?php
+
+use yii\helpers\Html;
 use kartik\grid\GridView;
 use backend\admin\models\OpenTicket;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Url;
 $this->registerCss("
 	#gv-app-detail .kv-grid-container{
 		height:300px
 	}
 ");
-?> 
-<?php
-	$aryStt= [
+/* @var $this yii\web\View */
+/* @var $searchModel backend\qualitycontrol\modelsOpenTicketSearch */
+/* @var $dataProvider yii\data\ActiveDataProvider */
+
+$this->title = 'Quality Control / Quality Assurance';
+$this->params['breadcrumbs'][] = $this->title;
+?>
+<div class="open-ticket-index">
+
+    <h1><?= Html::encode($this->title) ?></h1>
+    <?php $aryStt= [
 		['STATUS' => 0, 'STT_NM' => 'OPEN'],		  
 		['STATUS' => 1, 'STT_NM' => 'REVISI'],
 		['STATUS' => 2, 'STT_NM' => 'CLOSE'],
@@ -26,7 +37,8 @@ $this->registerCss("
 		],	
 		[
 			'attribute'=>'KTG_NM',
-			'label'=>'NAMA KATEGORI',
+            'label'=>'NAMA KATEGORI',
+            'value'=>function($model){return Html::tag('div', $model->KTG_NM, ['data-toggle'=>'tooltip','data-placement'=>'left','title'=>'Double click to Outlet Items ','style'=>'cursor:default;']);},
 			'filterType'=>true,
 			'hAlign'=>'left',
 			'vAlign'=>'middle',
@@ -34,11 +46,13 @@ $this->registerCss("
 			'filterType'=>GridView::FILTER_SELECT2,
 			'filterWidgetOptions'=>['pluginOptions'=>['allowClear'=>true]],	
 			'filterInputOptions'=>['placeholder'=>'-Pilih-'],
-			'filterOptions'=>[],	
+            'filterOptions'=>[],	
+            'format'=>'raw'
 		],		
 		[
 			'attribute'=>'MODUL_NM',
 			'label'=>'MODUL',
+			'value'=>function($model){return Html::tag('div', $model->MODUL_NM, ['data-toggle'=>'tooltip','data-placement'=>'left','title'=>'Double click to Outlet Items ','style'=>'cursor:default;']);},
 			'filterType'=>true,
 			'hAlign'=>'left',
 			'vAlign'=>'middle',
@@ -46,17 +60,21 @@ $this->registerCss("
 			'filterType'=>GridView::FILTER_SELECT2,
 			'filterWidgetOptions'=>['pluginOptions'=>['allowClear'=>true]],	
 			'filterInputOptions'=>['placeholder'=>'-Pilih-'],
-			'filterOptions'=>[],		
+			'filterOptions'=>[],	
+            'format'=>'raw'		
 		],				
 		[
 			'attribute'=>'TITLE',
 			'label'=>'TITLE',
+			'value'=>function($model){return Html::tag('div', $model->TITLE, ['data-toggle'=>'tooltip','data-placement'=>'left','title'=>'Double click to Outlet Items ','style'=>'cursor:default;']);},
 			'filterType'=>true,
 			'hAlign'=>'left',
-			'vAlign'=>'middle',		
+			'vAlign'=>'middle',	
+            'format'=>'html'		
 		],				
 		[
 			'attribute'=>'TGL1',
+			'value'=>function($model){return Html::tag('div', $model->TGL1, ['data-toggle'=>'tooltip','data-placement'=>'left','title'=>'Double click to Outlet Items ','style'=>'cursor:default;']);},
 			'label'=>'START',
 			'filterType'=>true,
 			'hAlign'=>'left',
@@ -71,10 +89,12 @@ $this->registerCss("
                     'autoWidget' => false,
                 ]
             ],	
+            'format'=>'raw'	
 		],
 		[
 			'attribute'=>'TGL2',
 			'label'=>'END',
+			'value'=>function($model){return Html::tag('div', $model->TGL2, ['data-toggle'=>'tooltip','data-placement'=>'left','title'=>'Double click to Outlet Items ','style'=>'cursor:default;']);},
 			'filterType'=>true,
 			'hAlign'=>'left',
 			'vAlign'=>'middle',
@@ -87,78 +107,41 @@ $this->registerCss("
                     'todayHighlight' => true,
                     'autoWidget' => false,
                 ]
-            ],
+            ],	
+            'format'=>'raw'
         ],
         [
 			'attribute'=>'DESKRIPSI',
+			'value'=>function($model){return Html::tag('div', $model->DESKRIPSI, ['data-toggle'=>'tooltip','data-placement'=>'left','title'=>'Double click to Outlet Items ','style'=>'cursor:default;']);},
 			'label'=>'DESKRIPSI',
 			'filterType'=>true,
 			'hAlign'=>'left',
 			'vAlign'=>'middle',
             'format'=>'html',		
 		],
-		[
-			'attribute'=>'STATUS',
-			'label'=>'STATUS',
-			'filterType'=>true,
-			'hAlign'=>'left',
-			'vAlign'=>'middle',
-			'format'=>'html',
-			'filter'=>ArrayHelper::map($aryStt,'STATUS','STT_NM'),
-			'filterType'=>GridView::FILTER_SELECT2,
-			'filterWidgetOptions'=>['pluginOptions'=>['allowClear'=>true]],	
-			'filterInputOptions'=>['placeholder'=>'-Pilih-'],
-			'filterOptions'=>[],			
-            'value'=>function ($model)
-            {
-                if ($model['STATUS']=='0') {
-                    return 'OPEN';
-                } else if($model['STATUS']=='1'){
-                    return 'REVISI';
-                } else if($model['STATUS']=='2'){
-                    return 'CLOSE';
-                }elseif($model['STATUS']=='3'){
-                    return 'REMOVE';
-                }
-            }		
-		],
 	];
 	
-	$gvAttProdakHargaItem[]=[			
-		//ACTION
-		'class' => 'kartik\grid\ActionColumn',
-		'template' => '{view}{send}',
-		'header'=>'ACTION',
-		'dropdown' => true,
-		'dropdownOptions'=>[
-			'class'=>'pull-right dropdown',
-			'style'=>'width:100%;background-color:#E6E6FA'				
-		],
-		'dropdownButton'=>[
-			'label'=>'ACTION',
-			'class'=>'btn btn-info btn-xs',
-			'style'=>'width:100%'		
-		],
-		'buttons' => [
-			'view' =>function ($url, $model){
-				return  tombolViewModul($url, $model);
-			},
-			'send' =>function ($url, $model){
-				if ($model['STATUS_QA']==0) {
-					# code...
-					return  tombolSendQa($url, $model);
-				}
-			},
-		],
-		// 'headerOptions'=>Yii::$app->gv->gvContainHeader('center','10px',$bColor,'#ffffff'),
-		// 'contentOptions'=>Yii::$app->gv->gvContainBody('center','10px',''),
-	]; 
 	echo $gvAllProdakHarga=GridView::widget([
 		'id'=>'gv-app-detail',
-		'dataProvider' => $dataProviderjobdesk,
-		'filterModel' => $searchModeljobdesk,
+		'dataProvider' => $dataProvider,
+		'filterModel' => $searchModel,
 		'columns'=>$gvAttProdakHargaItem,				
-		'pjax'=>true,
+        'pjax'=>true,
+        'rowOptions'   => function ($model, $key, $index, $grid) {
+            if($model['STATUS_QA']==1){
+                $btnclick= ['ondblclick' => '
+				document.cookie="STORE_ID" + "=" +'.$model->ID.';
+				$.pjax.reload({
+					url: "'.Url::to(["/master/store/"]).'",
+					container: "#w20",
+					timeout: 1000,
+				});	'];
+                return ['class' => 'success','ondblclick' => 'location.href="'.Url::to(["/qualitycontrol/feedback-qa"]).'?id='.$model->ID.'"'];
+            }else{			
+			$btnclick= ['ondblclick' => 'location.href="'.Url::to(["/qualitycontrol/feedback-qa"]).'?id='.$model->ID.'"'];
+            return $btnclick;
+            }
+		},
 		'pjaxSettings'=>[
 			'options'=>[
 				'enablePushState'=>false,
@@ -181,3 +164,4 @@ $this->registerCss("
 			'showFooter'=>false,
 		],
 	]); ?>
+</div>

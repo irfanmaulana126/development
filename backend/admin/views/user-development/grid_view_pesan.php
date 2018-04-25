@@ -3,8 +3,8 @@ use kartik\grid\GridView;
 use backend\admin\models\OpenTicket;
 use yii\helpers\ArrayHelper;
 $this->registerCss("
-	#gv-app-detail .kv-grid-container{
-		height:300px
+	#gv-app-detail-pesan .kv-grid-container{
+		height:500px
 	}
 ");
 ?> 
@@ -25,7 +25,7 @@ $this->registerCss("
 			'header'=>'No.',
 		],	
 		[
-			'attribute'=>'KTG_NM',
+			'attribute'=>'ktgnm',
 			'label'=>'NAMA KATEGORI',
 			'filterType'=>true,
 			'hAlign'=>'left',
@@ -37,7 +37,7 @@ $this->registerCss("
 			'filterOptions'=>[],	
 		],		
 		[
-			'attribute'=>'MODUL_NM',
+			'attribute'=>'modulnm',
 			'label'=>'MODUL',
 			'filterType'=>true,
 			'hAlign'=>'left',
@@ -98,7 +98,7 @@ $this->registerCss("
             'format'=>'html',		
 		],
 		[
-			'attribute'=>'STATUS',
+			'attribute'=>'statuspesan',
 			'label'=>'STATUS',
 			'filterType'=>true,
 			'hAlign'=>'left',
@@ -124,45 +124,16 @@ $this->registerCss("
 		],
 	];
 	
-	$gvAttProdakHargaItem[]=[			
-		//ACTION
-		'class' => 'kartik\grid\ActionColumn',
-		'template' => '{view}{send}',
-		'header'=>'ACTION',
-		'dropdown' => true,
-		'dropdownOptions'=>[
-			'class'=>'pull-right dropdown',
-			'style'=>'width:100%;background-color:#E6E6FA'				
-		],
-		'dropdownButton'=>[
-			'label'=>'ACTION',
-			'class'=>'btn btn-info btn-xs',
-			'style'=>'width:100%'		
-		],
-		'buttons' => [
-			'view' =>function ($url, $model){
-				return  tombolViewModul($url, $model);
-			},
-			'send' =>function ($url, $model){
-				if ($model['STATUS_QA']==0) {
-					# code...
-					return  tombolSendQa($url, $model);
-				}
-			},
-		],
-		// 'headerOptions'=>Yii::$app->gv->gvContainHeader('center','10px',$bColor,'#ffffff'),
-		// 'contentOptions'=>Yii::$app->gv->gvContainBody('center','10px',''),
-	]; 
 	echo $gvAllProdakHarga=GridView::widget([
-		'id'=>'gv-app-detail',
-		'dataProvider' => $dataProviderjobdesk,
-		'filterModel' => $searchModeljobdesk,
+		'id'=>'gv-app-detail-pesan',
+		'dataProvider' => $dataProviderpesan,
+		'filterModel' => $searchModelpesan,
 		'columns'=>$gvAttProdakHargaItem,				
 		'pjax'=>true,
 		'pjaxSettings'=>[
 			'options'=>[
 				'enablePushState'=>false,
-				'id'=>'gv-app-detail',
+				'id'=>'gv-app-detail-pesan',
 		    ],						  
 		],
 		'hover'=>true,

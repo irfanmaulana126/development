@@ -1,19 +1,18 @@
 <?php
 
-namespace backend\openticket\controllers;
+namespace backend\qualitycontrol\controllers;
 
 use Yii;
-use backend\openticket\models\AppDetailKtg;
-use backend\openticket\models\AppDetailKtgSearch;
-use backend\openticket\models\OpenTicket;
+use backend\qualitycontrol\models\OpenTicket;
+use backend\qualitycontrol\models\OpenTicketSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * AppDetailKtgController implements the CRUD actions for AppDetailKtg model.
+ * OpenTicketController implements the CRUD actions for OpenTicket model.
  */
-class AppDetailKtgController extends Controller
+class OpenTicketController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -50,12 +49,12 @@ class AppDetailKtgController extends Controller
        }
    }
     /**
-     * Lists all AppDetailKtg models.
+     * Lists all OpenTicket models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new AppDetailKtgSearch();
+        $searchModel = new OpenTicketSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -65,40 +64,38 @@ class AppDetailKtgController extends Controller
     }
 
     /**
-     * Displays a single AppDetailKtg model.
+     * Displays a single OpenTicket model.
      * @param string $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
     {
-        return $this->renderAjax('view', [
+        return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
     }
 
     /**
-     * Creates a new AppDetailKtg model.
+     * Creates a new OpenTicket model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new AppDetailKtg();
+        $model = new OpenTicket();
 
-        if ($model->load(Yii::$app->request->post())) {            
-            $model->KODE_USER=Yii::$app->user->identity->id;
-            $model->save(FALSE);
-            return $this->redirect(['index']);
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->ID]);
         }
 
-        return $this->renderAjax('_form_create_modul', [
+        return $this->render('create', [
             'model' => $model,
         ]);
     }
 
     /**
-     * Updates an existing AppDetailKtg model.
+     * Updates an existing OpenTicket model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param string $id
      * @return mixed
@@ -118,7 +115,7 @@ class AppDetailKtgController extends Controller
     }
 
     /**
-     * Deletes an existing AppDetailKtg model.
+     * Deletes an existing OpenTicket model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param string $id
      * @return mixed
@@ -130,38 +127,17 @@ class AppDetailKtgController extends Controller
 
         return $this->redirect(['index']);
     }
+
     /**
-     * apply job modul
-     */
-    public function actionApplyModul($id)
-    {
-        $model = new OpenTicket;
-        $data = AppDetailKtg::findOne($id);
-        if ($model->load(Yii::$app->request->post())) {
-            $model->KODE_KTG=$data['KODE_KTG'];
-            $model->KODE_MODUL=$id;
-            $model->KODE_USER=Yii::$app->user->identity->id;
-            $model->API_KEY=Yii::$app->user->identity->auth_key;
-            // print_r($model);die();
-            $model->save(false);
-            return $this->redirect(['/admin/user-development']);
-        } else {
-            return $this->renderAjax('_form_apply', [
-                'model' => $model,
-                'data' => $data,
-            ]);
-        }
-    }
-    /**
-     * Finds the AppDetailKtg model based on its primary key value.
+     * Finds the OpenTicket model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param string $id
-     * @return AppDetailKtg the loaded model
+     * @return OpenTicket the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = AppDetailKtg::findOne($id)) !== null) {
+        if (($model = OpenTicket::findOne($id)) !== null) {
             return $model;
         }
 

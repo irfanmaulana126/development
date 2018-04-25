@@ -1,9 +1,9 @@
 <?php
 
-namespace backend\admin\models;
+namespace backend\qualitycontrol\models;
 
 use Yii;
-use backend\admin\models\OpenTicket;
+
 /**
  * This is the model class for table "open_ticket".
  *
@@ -20,7 +20,7 @@ use backend\admin\models\OpenTicket;
  * @property string $KODE_KTG
  * @property string $KTG_NM
  * @property string $TITLE
- * @property int $STATUS_QA 0=create;1=send to qa ;2=read from qa
+ * @property int $STATUS_QA 0=create;1=send;
  */
 class OpenTicket extends \yii\db\ActiveRecord
 {
@@ -67,17 +67,5 @@ class OpenTicket extends \yii\db\ActiveRecord
             'TITLE' => 'Title',
             'STATUS_QA' => 'Status  Qa',
         ];
-    }
-    public function getKtgnm(){
-        return $this->KTG_NM;
-    }
-    public function getModulnm(){
-        return $this->MODUL_NM;
-    }
-    public function getStatuspesan(){
-        return $this->STATUS;
-    }
-    public function getStatusqapesan(){
-        return $this->STATUS_QA;
     }
 }

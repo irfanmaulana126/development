@@ -37,6 +37,24 @@ function tombolViewModul($url, $model){
     $content = Html::button($label1,$options1);		
     return '<li>'.$content.'</li>';
 }
+function tombolSendQa($url, $model){
+    $title1 = Yii::t('app',' Send QA/QC');
+    $options1 = [
+        'value'=>url::to(['/admin/user-development/send-qa','id'=>$model['ID']]),
+        'id'=>'send-qa',
+        'class'=>"btn btn-default btn-xs",    
+        'style'=>['text-align'=>'left','width'=>'100%', 'height'=>'25px','border'=> 'none'],
+    ];
+    $icon1 = '
+        <span class="fa-stack fa-xs">																	
+            <i class="fa fa-circle-thin fa-stack-2x " style="color:#FF5F00"></i>
+            <i class="fa fa-eye fa-stack-1x" style="color:black"></i>
+        </span>
+    ';      
+    $label1 = $icon1 . '  ' . $title1;
+    $content = Html::button($label1,$options1);		
+    return '<li>'.$content.'</li>';
+}
 function tombolOpenticket(){
     
     $title1 = Yii::t('app',' Open Tiket');

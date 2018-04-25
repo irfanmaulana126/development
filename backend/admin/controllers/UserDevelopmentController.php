@@ -9,6 +9,7 @@ use backend\admin\models\AppDetailKtg;
 use backend\admin\models\AppDetailKtgSearch;
 use backend\admin\models\OpenTicket;
 use backend\admin\models\OpenTicketSearch;
+use backend\admin\models\FeedbackQa;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -61,10 +62,14 @@ class UserDevelopmentController extends Controller
         $dataProvider = UserDevelopmentSearch::findOne(['id'=>$user]);        
         $searchModeljobdesk = new OpenTicketSearch();
         $dataProviderjobdesk = $searchModeljobdesk->search(Yii::$app->request->queryParams);
+        $searchModelpesan = new OpenTicketSearch(['getStatusqapesan'=>[1]]);
+        $dataProviderpesan = $searchModelpesan->searchPesan(Yii::$app->request->queryParams);
         return $this->render('index', [
             'dataProvider' => $dataProvider,
             'dataProviderjobdesk' => $dataProviderjobdesk,
             'searchModeljobdesk' => $searchModeljobdesk,
+            'dataProviderpesan' => $dataProviderpesan,
+            'searchModelpesan' => $searchModelpesan,
         ]);
     }
 
@@ -124,6 +129,27 @@ class UserDevelopmentController extends Controller
             'model' => $model,
         ]);
     }
+    public function actionSendQa($id)
+    {
+        $data = OpenTicketSearch::findOne($id);
+        $model = new FeedbackQa;
+        $user = (empty(Yii::$app->user->identity->id)) ? '' : Yii::$app->user->identity->id;
+        if ($model->load(Yii::$app->request->post())) {
+            $model->ID_USER=$user;
+            $model->ID_OPEN_TIKET=$id;
+            $model->save(false);
+            $data->STATUS_QA=1;
+            $data->save(false);
+            return $this->redirect(['index']);
+        }
+
+        return $this->renderAjax('_form_send_qa', [
+            'model' => $model,
+        ]);
+    }
+    /**
+     * Function Change Password 
+     */
     public function actionChange($id)
     {
         $model =  UserDevelopment::findOne($id);
