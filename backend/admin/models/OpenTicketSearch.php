@@ -13,8 +13,8 @@ use backend\admin\models\OpenTicket;
 class OpenTicketSearch extends OpenTicket
 {
     public $getStatusqapesan;
-    public $ktgnm;
-    public $modulnm;
+    public $ktgnmpesan;
+    public $modulnmpesan;
     public $statuspesan;
     /**
      * {@inheritdoc}
@@ -23,7 +23,7 @@ class OpenTicketSearch extends OpenTicket
     {
         return [
             [['ID', 'STATUS','STATUS_QA','statuspesan','getStatusqapesan'], 'integer'],
-            [['KODE_KTG','TITLE', 'KTG_NM','ktgnm','modulnm','KODE_MODUL', 'MODUL_NM', 'KODE_USER', 'USERNAME', 'TGL1', 'TGL2', 'DESKRIPSI', 'API_KEY'], 'safe'],
+            [['KODE_KTG','TITLE', 'KTG_NM','ktgnmpesan','modulnmpesan','KODE_MODUL', 'MODUL_NM', 'KODE_USER', 'USERNAME', 'TGL1', 'TGL2', 'DESKRIPSI', 'API_KEY'], 'safe'],
         ];
     }
 
@@ -68,6 +68,8 @@ class OpenTicketSearch extends OpenTicket
             'TGL2' => $this->TGL2,
             'STATUS' => $this->STATUS,
             'STATUS_QA' => $this->STATUS_QA,
+            'STATUS' => $this->statuspesan,
+            'STATUS_QA' => $this->getStatusqapesan,
         ]);
 
         $query->andFilterWhere(['like', 'KODE_KTG', $this->KODE_KTG])
@@ -78,6 +80,8 @@ class OpenTicketSearch extends OpenTicket
             ->andFilterWhere(['like', 'KODE_USER', $this->KODE_USER])
             ->andFilterWhere(['like', 'USERNAME', $this->USERNAME])
             ->andFilterWhere(['like', 'DESKRIPSI', $this->DESKRIPSI])
+            ->andFilterWhere(['like', 'KTG_NM', $this->ktgnmpesan])
+            ->andFilterWhere(['like', 'MODUL_NM', $this->modulnmpesan])
             ->andFilterWhere(['like', 'API_KEY', $this->API_KEY]);
 
         return $dataProvider;
@@ -110,10 +114,10 @@ class OpenTicketSearch extends OpenTicket
         ]);
 
         $query->andFilterWhere(['like', 'KODE_KTG', $this->KODE_KTG])
-            ->andFilterWhere(['like', 'KTG_NM', $this->ktgnm])
+            ->andFilterWhere(['like', 'KTG_NM', $this->ktgnmpesan])
             ->andFilterWhere(['like', 'TITLE', $this->TITLE])
             ->andFilterWhere(['like', 'KODE_MODUL', $this->KODE_MODUL])
-            ->andFilterWhere(['like', 'MODUL_NM', $this->modulnm])
+            ->andFilterWhere(['like', 'MODUL_NM', $this->modulnmpesan])
             ->andFilterWhere(['like', 'KODE_USER', $this->KODE_USER])
             ->andFilterWhere(['like', 'USERNAME', $this->USERNAME])
             ->andFilterWhere(['like', 'DESKRIPSI', $this->DESKRIPSI])

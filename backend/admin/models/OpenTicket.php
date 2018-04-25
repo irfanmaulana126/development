@@ -68,10 +68,10 @@ class OpenTicket extends \yii\db\ActiveRecord
             'STATUS_QA' => 'Status  Qa',
         ];
     }
-    public function getKtgnm(){
+    public function getKtgnmpesan(){
         return $this->KTG_NM;
     }
-    public function getModulnm(){
+    public function getModulnmpesan(){
         return $this->MODUL_NM;
     }
     public function getStatuspesan(){

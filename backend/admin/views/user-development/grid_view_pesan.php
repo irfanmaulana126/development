@@ -25,7 +25,7 @@ $this->registerCss("
 			'header'=>'No.',
 		],	
 		[
-			'attribute'=>'ktgnm',
+			'attribute'=>'ktgnmpesan',
 			'label'=>'NAMA KATEGORI',
 			'filterType'=>true,
 			'hAlign'=>'left',
@@ -37,7 +37,7 @@ $this->registerCss("
 			'filterOptions'=>[],	
 		],		
 		[
-			'attribute'=>'modulnm',
+			'attribute'=>'modulnmpesan',
 			'label'=>'MODUL',
 			'filterType'=>true,
 			'hAlign'=>'left',
