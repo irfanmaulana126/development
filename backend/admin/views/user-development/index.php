@@ -27,8 +27,8 @@ $detailview=$this->render('detail_view',[
     $detailview='';
 }
 $gridview=$this->render('grid_view',[    
-    'dataProviderKtg' => $dataProviderKtg,
-    'searchModelKtg' => $searchModelKtg,
+    'dataProviderjobdesk' => $dataProviderjobdesk,
+    'searchModeljobdesk' => $searchModeljobdesk,
 ]);
 ?>
 <div class="user-development-index">

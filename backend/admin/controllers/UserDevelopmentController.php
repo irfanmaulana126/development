@@ -59,12 +59,12 @@ class UserDevelopmentController extends Controller
     {        
         $user = (empty(Yii::$app->user->identity->id)) ? '' : Yii::$app->user->identity->id;
         $dataProvider = UserDevelopmentSearch::findOne(['id'=>$user]);        
-        $searchModelKtg = new AppDetailKtgSearch();
-        $dataProviderKtg = $searchModelKtg->search(Yii::$app->request->queryParams);
+        $searchModeljobdesk = new OpenTicketSearch();
+        $dataProviderjobdesk = $searchModeljobdesk->search(Yii::$app->request->queryParams);
         return $this->render('index', [
             'dataProvider' => $dataProvider,
-            'dataProviderKtg' => $dataProviderKtg,
-            'searchModelKtg' => $searchModelKtg,
+            'dataProviderjobdesk' => $dataProviderjobdesk,
+            'searchModeljobdesk' => $searchModeljobdesk,
         ]);
     }
 
@@ -117,45 +117,12 @@ class UserDevelopmentController extends Controller
         }
     }
 
-    public function actionCreateModul($id)
-    {
-        $model = new AppDetailKtg;
-
-        if ($model->load(Yii::$app->request->post())) {
-            $model->KODE_USER=$id;
-            // print_r($model);die();
-            $model->save();
-            return $this->redirect(['index']);
-        } else {
-            return $this->renderAjax('_form_create_modul', [
-                'model' => $model,
-            ]);
-        }
-    }
     public function actionViewModul($id)
     {
-        $model = AppDetailKtg::findOne($id);
+        $model = OpenTicketSearch::findOne($id);
         return $this->renderAjax('view_modul', [
             'model' => $model,
         ]);
-    }
-    public function actionOpenTicket($id)
-    {
-        $model = new OpenTicket;
-        $data = AppDetailKtg::findOne($id);
-        if ($model->load(Yii::$app->request->post())) {
-            $model->KODE_MODUL=$id;
-            $model->KODE_USER=Yii::$app->user->identity->id;
-            $model->API_KEY=Yii::$app->user->identity->auth_key;
-            // print_r($model);die();
-            $model->save(false);
-            return $this->redirect(['index']);
-        } else {
-            return $this->renderAjax('_form_open_ticket', [
-                'model' => $model,
-                'data' => $data,
-            ]);
-        }
     }
     public function actionChange($id)
     {

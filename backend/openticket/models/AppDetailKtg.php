@@ -1,11 +1,11 @@
 <?php
 
-namespace backend\admin\models;
+namespace backend\openticket\models;
 
 use Yii;
 
 /**
- * This is the model class for table "open_ticket".
+ * This is the model class for table "app_detail_ktg".
  *
  * @property string $ID
  * @property string $KODE_KTG
@@ -17,16 +17,15 @@ use Yii;
  * @property string $TGL2
  * @property string $DESKRIPSI
  * @property int $STATUS 0=pending;1=success;2=finish;
- * @property string $API_KEY
  */
-class OpenTicket extends \yii\db\ActiveRecord
+class AppDetailKtg extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'open_ticket';
+        return 'app_detail_ktg';
     }
 
     /**
@@ -35,11 +34,10 @@ class OpenTicket extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['TITLE','TGL1', 'TGL2'], 'safe'],
+            [['TGL1', 'TGL2'], 'safe'],
             [['DESKRIPSI'], 'string'],
             [['STATUS'], 'integer'],
-            [['KODE_KTG', 'KTG_NM','KODE_MODUL', 'MODUL_NM', 'KODE_USER', 'USERNAME'], 'string', 'max' => 255],
-            [['API_KEY'], 'string', 'max' => 50],
+            [['KODE_KTG', 'KTG_NM', 'MODUL_NM', 'KODE_USER', 'USERNAME'], 'string', 'max' => 255],
         ];
     }
 
@@ -50,8 +48,8 @@ class OpenTicket extends \yii\db\ActiveRecord
     {
         return [
             'ID' => 'ID',
-            'TITLE'=>'Title',
-            'KODE_MODUL' => 'Kode  modul',
+            'KODE_KTG' => 'Kode  Ktg',
+            'KTG_NM' => 'Ktg  Nm',
             'MODUL_NM' => 'Modul  Nm',
             'KODE_USER' => 'Kode  User',
             'USERNAME' => 'Username',
@@ -59,7 +57,6 @@ class OpenTicket extends \yii\db\ActiveRecord
             'TGL2' => 'Tgl2',
             'DESKRIPSI' => 'Deskripsi',
             'STATUS' => 'Status',
-            'API_KEY' => 'Api  Key',
         ];
     }
 }

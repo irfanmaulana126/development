@@ -1,22 +1,39 @@
 <?php
+use yii\helpers\Html;
 use kartik\grid\GridView;
-use backend\admin\models\OpenTicket;
 use yii\helpers\ArrayHelper;
-$this->registerCss("
-	#gv-app-detail .kv-grid-container{
-		height:300px
-	}
-");
-?> 
+use yii\helpers\Url;
+use kartik\widgets\ActiveForm;
+use yii\web\View;
+use kartik\widgets\Alert;
+use yii\widgets\Breadcrumbs;
+use backend\openticket\models\AppDetailKtg;
+
+/* @var $this yii\web\View */
+/* @var $searchModel backend\openticket\models\AppDetailKtgSearch */
+/* @var $dataProvider yii\data\ActiveDataProvider */
+
+$this->title = 'Open Ticket';
+$this->params['breadcrumbs'][] = $this->title;
+
+$this->registerJs($this->render('modal_openticket.js'),View::POS_READY);
+echo $this->render('button_openticket');
+echo $this->render('modal_openticket');
+?>
+<div class="app-detail-ktg-index">
+
+<div class="text-right">
+    <p>
+        <?= tombolCreateModul() ?>
+    </p>
+</div>
 <?php
-	$aryStt= [
-		['STATUS' => 0, 'STT_NM' => 'OPEN'],		  
-		['STATUS' => 1, 'STT_NM' => 'REVISI'],
-		['STATUS' => 2, 'STT_NM' => 'CLOSE'],
-		['STATUS' => 3, 'STT_NM' => 'REMOVE'],
-	];
-	$user = (empty(Yii::$app->user->identity->id)) ? '' : Yii::$app->user->identity->id;
-	$pageNm='<b>JOB DESK</b>';
+$aryStt= [
+    ['STATUS' => 0, 'STT_NM' => 'OPEN'],		  
+    ['STATUS' => 1, 'STT_NM' => 'CLOSE'],
+    ['STATUS' => 2, 'STT_NM' => 'REMOVE'],
+];
+    $pageNm='<b>MODUL</b>';
     $gvAttProdakHargaItem=[
 		[
 			'class'=>'kartik\grid\SerialColumn',
@@ -29,8 +46,8 @@ $this->registerCss("
 			'label'=>'NAMA KATEGORI',
 			'filterType'=>true,
 			'hAlign'=>'left',
-			'vAlign'=>'middle',
-			'filter'=>ArrayHelper::map(OpenTicket::find()->where(['KODE_USER'=>$user])->orderBy(['STATUS'=>SORT_DESC])->all(),'KTG_NM','KTG_NM'),
+			'vAlign'=>'middle',	
+			'filter'=>ArrayHelper::map(AppDetailKtg::find()->orderBy(['STATUS'=>SORT_DESC])->all(),'KTG_NM','KTG_NM'),
 			'filterType'=>GridView::FILTER_SELECT2,
 			'filterWidgetOptions'=>['pluginOptions'=>['allowClear'=>true]],	
 			'filterInputOptions'=>['placeholder'=>'-Pilih-'],
@@ -41,19 +58,12 @@ $this->registerCss("
 			'label'=>'MODUL',
 			'filterType'=>true,
 			'hAlign'=>'left',
-			'vAlign'=>'middle',
-			'filter'=>ArrayHelper::map(OpenTicket::find()->where(['KODE_USER'=>$user])->orderBy(['STATUS'=>SORT_DESC])->all(),'MODUL_NM','MODUL_NM'),
+			'vAlign'=>'middle',		
+			'filter'=>ArrayHelper::map(AppDetailKtg::find()->orderBy(['STATUS'=>SORT_DESC])->all(),'MODUL_NM','MODUL_NM'),
 			'filterType'=>GridView::FILTER_SELECT2,
 			'filterWidgetOptions'=>['pluginOptions'=>['allowClear'=>true]],	
 			'filterInputOptions'=>['placeholder'=>'-Pilih-'],
-			'filterOptions'=>[],		
-		],				
-		[
-			'attribute'=>'TITLE',
-			'label'=>'TITLE',
-			'filterType'=>true,
-			'hAlign'=>'left',
-			'vAlign'=>'middle',		
+			'filterOptions'=>[],
 		],				
 		[
 			'attribute'=>'TGL1',
@@ -96,26 +106,24 @@ $this->registerCss("
 			'hAlign'=>'left',
 			'vAlign'=>'middle',
             'format'=>'html',		
-		],
-		[
+        ],
+        [
 			'attribute'=>'STATUS',
 			'label'=>'STATUS',
 			'filterType'=>true,
 			'hAlign'=>'left',
 			'vAlign'=>'middle',
-			'format'=>'html',
+            'format'=>'html',
 			'filter'=>ArrayHelper::map($aryStt,'STATUS','STT_NM'),
 			'filterType'=>GridView::FILTER_SELECT2,
 			'filterWidgetOptions'=>['pluginOptions'=>['allowClear'=>true]],	
 			'filterInputOptions'=>['placeholder'=>'-Pilih-'],
-			'filterOptions'=>[],			
+			'filterOptions'=>[],
             'value'=>function ($model)
             {
                 if ($model['STATUS']=='0') {
                     return 'OPEN';
                 } else if($model['STATUS']=='1'){
-                    return 'REVISI';
-                } else if($model['STATUS']=='2'){
                     return 'CLOSE';
                 }elseif($model['STATUS']=='3'){
                     return 'REMOVE';
@@ -127,7 +135,7 @@ $this->registerCss("
 	$gvAttProdakHargaItem[]=[			
 		//ACTION
 		'class' => 'kartik\grid\ActionColumn',
-		'template' => '{view}{open}',
+		'template' => '{view}{apply}',
 		'header'=>'ACTION',
 		'dropdown' => true,
 		'dropdownOptions'=>[
@@ -143,14 +151,17 @@ $this->registerCss("
 			'view' =>function ($url, $model){
 				return  tombolViewModul($url, $model);
 			},
+			'apply' =>function ($url, $model){
+				return  tombolApplay($url, $model);
+			},
 		],
 		// 'headerOptions'=>Yii::$app->gv->gvContainHeader('center','10px',$bColor,'#ffffff'),
 		// 'contentOptions'=>Yii::$app->gv->gvContainBody('center','10px',''),
 	]; 
 	echo $gvAllProdakHarga=GridView::widget([
 		'id'=>'gv-app-detail',
-		'dataProvider' => $dataProviderjobdesk,
-		'filterModel' => $searchModeljobdesk,
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
 		'columns'=>$gvAttProdakHargaItem,				
 		'pjax'=>true,
 		'pjaxSettings'=>[
@@ -175,3 +186,4 @@ $this->registerCss("
 			'showFooter'=>false,
 		],
 	]); ?>
+</div>

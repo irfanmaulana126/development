@@ -1,16 +1,16 @@
 <?php
 
-namespace backend\admin\models;
+namespace backend\openticket\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\admin\models\OpenTicket;
+use backend\openticket\models\AppDetailKtg;
 
 /**
- * OpenTicketSearch represents the model behind the search form of `backend\admin\models\OpenTicket`.
+ * AppDetailKtgSearch represents the model behind the search form of `backend\openticket\models\AppDetailKtg`.
  */
-class OpenTicketSearch extends OpenTicket
+class AppDetailKtgSearch extends AppDetailKtg
 {
     /**
      * {@inheritdoc}
@@ -19,7 +19,7 @@ class OpenTicketSearch extends OpenTicket
     {
         return [
             [['ID', 'STATUS'], 'integer'],
-            [['KODE_KTG','TITLE', 'KTG_NM','KODE_MODUL', 'MODUL_NM', 'KODE_USER', 'USERNAME', 'TGL1', 'TGL2', 'DESKRIPSI', 'API_KEY'], 'safe'],
+            [['KODE_KTG', 'KTG_NM', 'MODUL_NM', 'KODE_USER', 'USERNAME', 'TGL1', 'TGL2', 'DESKRIPSI'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class OpenTicketSearch extends OpenTicket
      */
     public function search($params)
     {
-        $query = OpenTicket::find();
+        $query = AppDetailKtg::find();
 
         // add conditions that should always apply here
 
@@ -67,13 +67,10 @@ class OpenTicketSearch extends OpenTicket
 
         $query->andFilterWhere(['like', 'KODE_KTG', $this->KODE_KTG])
             ->andFilterWhere(['like', 'KTG_NM', $this->KTG_NM])
-            ->andFilterWhere(['like', 'TITLE', $this->TITLE])
-            ->andFilterWhere(['like', 'KODE_MODUL', $this->KODE_MODUL])
             ->andFilterWhere(['like', 'MODUL_NM', $this->MODUL_NM])
             ->andFilterWhere(['like', 'KODE_USER', $this->KODE_USER])
             ->andFilterWhere(['like', 'USERNAME', $this->USERNAME])
-            ->andFilterWhere(['like', 'DESKRIPSI', $this->DESKRIPSI])
-            ->andFilterWhere(['like', 'API_KEY', $this->API_KEY]);
+            ->andFilterWhere(['like', 'DESKRIPSI', $this->DESKRIPSI]);
 
         return $dataProvider;
     }

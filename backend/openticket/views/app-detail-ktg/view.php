@@ -1,14 +1,18 @@
 <?php
 
+use yii\helpers\Html;
 use kartik\detail\DetailView;
+?>
+<div class="app-detail-ktg-view">
+<?php
 echo DetailView::widget([
             'id'=>'dv-info',
-            'model'=>$dataProvider,
+            'model' => $model,
             'condensed'=>true,
             'hAlign'=>'left',
             'hover'=>true,
             'panel'=>[
-                'heading'=>'<div class="pull-right">'.tombolOpenticket().' '.tombolChange($dataProvider).'</div><b>Detail Profile</b>',
+                'heading'=>'<b>Detail MODUL</b>',
                 'type'=>DetailView::TYPE_INFO,
             ],
             'mode'=>DetailView::MODE_VIEW,
@@ -18,17 +22,17 @@ echo DetailView::widget([
                 [
                     'columns' => [
                         [
-                            'attribute'=>'username',
-                            'label'=>'USERNAME',
-                            'value'=>(empty($dataProvider['username']))?'':$dataProvider['username'],
+                            'attribute'=>'KODE_KTG',
+                            'label'=>'KODE KATEGORI',
+                            'value'=>(empty($model['KODE_KTG']))?'':$model['KODE_KTG'],
                             'enableEditMode'=>false,
                             'displayOnly'=>true,
                             'valueColOptions'=>['style'=>'width:30%']
                         ],
                         [
-                            'attribute'=>'auth_key',
-                            'label'=>'AUTH KEY',
-                            'value'=>(empty($dataProvider['auth_key']))?'':$dataProvider['auth_key'],
+                            'attribute'=>'KTG_NM',
+                            'label'=>'KATEGORI',
+                            'value'=>(empty($model['KTG_NM']))?'':$model['KTG_NM'],
                             'enableEditMode'=>false,
                             'displayOnly'=>true,
                             'valueColOptions'=>['style'=>'width:30%']
@@ -38,17 +42,17 @@ echo DetailView::widget([
                 [
                     'columns' => [
                         [
-                            'attribute'=>'email',
-                            'label'=>'EMAIL',
-                            'value'=>(empty($dataProvider['email']))?'':$dataProvider['email'],
+                            'attribute'=>'MODUL_NM',
+                            'label'=>'MODUL',
+                            'value'=>(empty($model['MODUL_NM']))?'':$model['MODUL_NM'],
                             'enableEditMode'=>false,
                             'displayOnly'=>true,
                             'valueColOptions'=>['style'=>'width:30%']
                         ],
                         [
-                            'attribute'=>'status',
+                            'attribute'=>'STATUS',
                             'label'=>'STATUS',
-                            'value'=>(empty($dataProvider['status']))?'':$dataProvider['status'],
+                            'value'=>(empty($model['STATUS']))?'':$model['STATUS'],
                             'enableEditMode'=>false,
                             'displayOnly'=>true,
                             'valueColOptions'=>['style'=>'width:30%']
@@ -58,26 +62,37 @@ echo DetailView::widget([
                 [
                     'columns' => [
                         [
-                            'attribute'=>'password_hash',
-                            'label'=>'PASSWORD HASH',
-                            'value'=>(empty($dataProvider['password_hash']))?'':$dataProvider['password_hash'],
+                            'attribute'=>'TGL1',
+                            'label'=>'START',
+                            'value'=>(empty($model['TGL1']))?'':$model['TGL1'],
                             'enableEditMode'=>false,
                             'displayOnly'=>true,
-                            'valueColOptions'=>['style'=>'width:80%']
+                            'valueColOptions'=>['style'=>'width:30%']
+                        ],
+                        [
+                            'attribute'=>'TGL2',
+                            'label'=>'END',
+                            'value'=>(empty($model['TGL2']))?'':$model['TGL2'],
+                            'enableEditMode'=>false,
+                            'displayOnly'=>true,
+                            'valueColOptions'=>['style'=>'width:30%']
                         ],
                     ],
                 ],
                 [
                     'columns' => [
                         [
-                            'attribute'=>'password_reset_token',
-                            'label'=>'TOKEN REST PASSWORD',
-                            'value'=>(empty($dataProvider['password_reset_token']))?'':$dataProvider['password_reset_token'],
+                            'attribute'=>'DESKRIPSI',
+                            'label'=>'DESKRIPSI',
+                            'value'=>(empty($model['DESKRIPSI']))?'':$model['DESKRIPSI'],
                             'enableEditMode'=>false,
                             'displayOnly'=>true,
+                            'format'=>'html',
                             'valueColOptions'=>['style'=>'width:80%']
                         ],
                     ],
                 ],
             ]
         ]);?>
+        
+</div>
