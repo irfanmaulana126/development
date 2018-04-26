@@ -1,11 +1,12 @@
 <?php
 
-namespace backend\qualitycontrol\controllers;
+namespace backend\admin\controllers;
 
 use Yii;
-use backend\qualitycontrol\models\FeedbackQa;
-use backend\qualitycontrol\models\FeedbackQaSearch;
-use backend\qualitycontrol\models\OpenTicket;
+use backend\admin\models\FeedbackQa;
+use backend\admin\models\FeedbackQaSearch;
+use backend\admin\models\OpenTicket;
+use backend\admin\models\OpenTicketSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -29,7 +30,6 @@ class FeedbackQaController extends Controller
             ],
         ];
     }
-
     public function beforeAction($action){
         $modulIndentify=4; //OUTLET
        // Check only when the user is logged in.
@@ -55,24 +55,22 @@ class FeedbackQaController extends Controller
      */
     public function actionIndex()
     {
-        
         $paramCari=Yii::$app->getRequest()->getQueryParam('id');
         if (!empty($paramCari)) {
             $searchModel = new FeedbackQaSearch(['ID_OPEN_TIKET'=>$paramCari]);
             $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
             $dataProviderJobdesk = OpenTicket::findOne(['ID'=>$paramCari]);
-            $dataProviderJobdesk->STATUS_QA=2;
+            $dataProviderJobdesk->STATUS_QA=3;
             $dataProviderJobdesk->save(false);
+            // print_r($dataProviderJobdesk);die();
             return $this->render('index', [
                 'searchModel' => $searchModel,
                 'dataProvider' => $dataProvider,
-                'dataProviderJobdesk' => $dataProviderJobdesk,
+                'dataProviderJobdesk'=>$dataProviderJobdesk
             ]);
         } else {
-            return $this->redirect(['/qualitycontrol/open-ticket']);
+            return $this->redirect(['/admin/user-development']);
         }
-        
-       
     }
 
     /**
@@ -102,6 +100,24 @@ class FeedbackQaController extends Controller
         }
 
         return $this->render('create', [
+            'model' => $model,
+        ]);
+    }
+    public function actionKomen($id)
+    {
+        $data = OpenTicketSearch::findOne($id);
+        $model = new FeedbackQa;
+        $user = (empty(Yii::$app->user->identity->id)) ? '' : Yii::$app->user->identity->id;
+        if ($model->load(Yii::$app->request->post())) {
+            $model->ID_USER=$user;
+            $model->ID_OPEN_TIKET=$id;
+            $model->save(false);
+            $data->STATUS_QA=1;
+            $data->save(false);
+            return $this->redirect(['index']);
+        }
+
+        return $this->renderAjax('_form_komen', [
             'model' => $model,
         ]);
     }
@@ -139,33 +155,7 @@ class FeedbackQaController extends Controller
 
         return $this->redirect(['index']);
     }
-    public function actionKomen($id)
-    {
-        $data = OpenTicket::findOne($id);
-        $model = new FeedbackQa;
-        $user = (empty(Yii::$app->user->identity->id)) ? '' : Yii::$app->user->identity->id;
-        if ($model->load(Yii::$app->request->post())) {
-            $model->ID_USER=$user;
-            $model->ID_OPEN_TIKET=$id;
-            $model->save(false);
-            $data->STATUS=1;
-            $data->STATUS_QA=1;
-            $data->save(false);
-            return $this->redirect(['/qualitycontrol/feedback-qa?id='.$id.'']);
-        }
 
-        return $this->renderAjax('_form_komen', [
-            'model' => $model,
-        ]);
-    }
-    public function actionClose($id)
-    {
-        $data = OpenTicket::findOne($id);
-        $data->STATUS=2;
-        $data->save(false);
-        return $this->redirect(['index']);
-        
-    }
     /**
      * Finds the FeedbackQa model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

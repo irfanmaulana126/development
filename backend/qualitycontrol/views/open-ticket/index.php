@@ -129,13 +129,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'pjax'=>true,
         'rowOptions'   => function ($model, $key, $index, $grid) {
             if($model['STATUS_QA']==1){
-                $btnclick= ['ondblclick' => '
-				document.cookie="STORE_ID" + "=" +'.$model->ID.';
-				$.pjax.reload({
-					url: "'.Url::to(["/master/store/"]).'",
-					container: "#w20",
-					timeout: 1000,
-				});	'];
                 return ['class' => 'success','ondblclick' => 'location.href="'.Url::to(["/qualitycontrol/feedback-qa"]).'?id='.$model->ID.'"'];
             }else{			
 			$btnclick= ['ondblclick' => 'location.href="'.Url::to(["/qualitycontrol/feedback-qa"]).'?id='.$model->ID.'"'];

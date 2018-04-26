@@ -121,7 +121,8 @@ class OpenTicketSearch extends OpenTicket
             ->andFilterWhere(['like', 'KODE_USER', $this->KODE_USER])
             ->andFilterWhere(['like', 'USERNAME', $this->USERNAME])
             ->andFilterWhere(['like', 'DESKRIPSI', $this->DESKRIPSI])
-            ->andFilterWhere(['like', 'API_KEY', $this->API_KEY]);
+            ->andFilterWhere(['like', 'API_KEY', $this->API_KEY])
+            ->orderBy(['STATUS'=>SORT_ASC]);
 
         return $dataProvider;
     }

@@ -2,6 +2,7 @@
 use kartik\grid\GridView;
 use backend\admin\models\OpenTicket;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Url;
 $this->registerCss("
 	#gv-app-detail-pesan .kv-grid-container{
 		height:500px
@@ -128,7 +129,15 @@ $this->registerCss("
 		'id'=>'gv-app-detail-pesan',
 		'dataProvider' => $dataProviderpesan,
 		'filterModel' => $searchModelpesan,
-		'columns'=>$gvAttProdakHargaItem,				
+		'columns'=>$gvAttProdakHargaItem,	
+		'rowOptions'   => function ($model, $key, $index, $grid) {
+            if($model['STATUS_QA']==4){
+                return ['class' => 'success','ondblclick' => 'location.href="'.Url::to(["/admin/feedback-qa"]).'?id='.$model->ID.'"'];
+            }else{			
+			$btnclick= ['ondblclick' => 'location.href="'.Url::to(["/admin/feedback-qa"]).'?id='.$model->ID.'"'];
+            return $btnclick;
+            }
+		},			
 		'pjax'=>true,
 		'pjaxSettings'=>[
 			'options'=>[

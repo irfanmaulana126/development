@@ -96,6 +96,9 @@ $data = $this->render('apidoc/index.html'); */
 					  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 text-center pad-top">
 						  <div class="div-square">
 							   <a href="/admin/user-development" >
+									<?php if($notifuser>0){?>							   
+										<span class="label label-success" style="float:right"><?=$notifuser?></span>
+									<?php } ?>							   
 									<i class="fa fa-user fa-5x"></i>
 									<h4>User </h4>
 								</a>
@@ -120,6 +123,9 @@ $data = $this->render('apidoc/index.html'); */
 					  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 text-center pad-top">
 						  <div class="div-square">
 							   <a href="/qualitycontrol/open-ticket" >
+									<?php if($notifqa>0){?>	
+										<span class="label label-success" style="float:right"><?=$notifqa?></span>
+									<?php } ?>
 									<i class="fa fa-bug fa-5x"></i>
 									<h4>QA / QC</h4>
 								</a>
