@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
+use kartik\grid\GridView;
 use yii\web\View;
 $this->registerJs($this->render('modal_feedback.js'),View::POS_READY);
 echo $this->render('button_feedback');
@@ -32,11 +32,57 @@ if (!empty($dataProviderJobdesk)) {
         </p>
     </div>
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-                'DESKRIPSI:ntext',
-        ],
-    ]); ?>
+    <?php 
+$user = (empty(Yii::$app->user->identity->id)) ? '' : Yii::$app->user->identity->id;
+$gvAttProdakHargaItem=[
+    [
+        'class'=>'kartik\grid\SerialColumn',
+        'contentOptions'=>['class'=>'kartik-sheet-style'],
+        'width'=>'10px',
+        'header'=>'No.',
+    ],
+    [
+        'attribute'=>'USER_NM',
+        'label'=>'USER',
+        'filterType'=>true,
+        'hAlign'=>'left',
+        'vAlign'=>'middle',
+        'format'=>'raw',		
+    ],
+    [
+        'attribute'=>'DESKRIPSI',
+        'label'=>'DESKRIPSI',
+        'filterType'=>true,
+        'hAlign'=>'left',
+        'vAlign'=>'middle',
+        'format'=>'html',		
+    ],
+]; 
+echo $gvAllProdakHarga=GridView::widget([
+    'id'=>'gv-app-komen',
+    'dataProvider' => $dataProvider,
+    'filterModel' => $searchModel,
+    'columns'=>$gvAttProdakHargaItem,				
+    'pjax'=>true,
+    'pjaxSettings'=>[
+        'options'=>[
+            'enablePushState'=>false,
+            'id'=>'gv-app-komen',
+        ],						  
+    ],
+    'hover'=>true,
+    'responsive'=>true,
+    'responsiveWrap'=>true,
+    'bordered'=>true,
+    'striped'=>true,
+    'autoXlFormat'=>true,
+    'export' => false,
+    'panel'=>[''],
+    'toolbar' => false,
+    'panel' => [
+        'type'=>'success',
+        'before'=>false,
+        'showFooter'=>false,
+    ],
+]); ?>
 </div>

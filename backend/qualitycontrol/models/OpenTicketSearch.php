@@ -63,7 +63,7 @@ class OpenTicketSearch extends OpenTicket
             'TGL1' => $this->TGL1,
             'TGL2' => $this->TGL2,
             'STATUS' => $this->STATUS,
-            'STATUS_QA' => [1,2],
+            'STATUS_QA' =>[1,3,4,2],
         ]);
 
         $query->andFilterWhere(['like', 'KODE_MODUL', $this->KODE_MODUL])
