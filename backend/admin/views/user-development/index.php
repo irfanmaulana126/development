@@ -7,6 +7,7 @@ use kartik\widgets\ActiveForm;
 use yii\web\View;
 use kartik\widgets\Alert;
 use yii\widgets\Breadcrumbs;
+use kartik\tabs\TabsX;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\admin\models\UserDevelopmentSearch */
@@ -26,9 +27,32 @@ $detailview=$this->render('detail_view',[
 }else{
     $detailview='';
 }
+
 $gridview=$this->render('grid_view',[    
-    'dataProviderKtg' => $dataProviderKtg,
-    'searchModelKtg' => $searchModelKtg,
+    'dataProviderjobdesk' => $dataProviderjobdesk,
+    'searchModeljobdesk' => $searchModeljobdesk,
+]);
+$gridviewpesan=$this->render('grid_view_pesan',[    
+    'dataProviderpesan' => $dataProviderpesan,
+    'searchModelpesan' => $searchModelpesan,
+]);
+
+$items = [
+    [
+        'label'=>'<i class="glyphicon glyphicon-home"></i> JOB DESK',
+        'content'=>$gridview,
+        'active'=>true
+    ],
+    [
+        'label'=>'<i class="glyphicon glyphicon-envelope"></i> PESAN',
+        'content'=>$gridviewpesan
+    ],
+];
+
+$tabIndex=TabsX::widget([
+    'items'=>$items,
+	'enableStickyTabs'=>true,
+    'encodeLabels'=>false
 ]);
 ?>
 <div class="user-development-index">
@@ -38,6 +62,6 @@ $gridview=$this->render('grid_view',[
     if (!empty($detailview)) {
         echo $detailview;
     }
-        echo $gridview;
+        echo $tabIndex;
     ?>
 </div>

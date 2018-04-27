@@ -6,7 +6,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
-
+use backend\admin\models\OpenTicket;
 /**
  * Site controller
  */
@@ -40,7 +40,6 @@ class SiteController extends Controller
             ],
         ];
     }
-
     /**
      * @inheritdoc
      */
@@ -60,7 +59,12 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $notifuser = OpenTicket::find()->where(['STATUS_QA'=>4,'STATUS'=>[0,1]])->count();;
+        $notifqa = OpenTicket::find()->where(['STATUS_QA'=>1,'STATUS'=>[0,1]])->count();;
+        return $this->render('index',[
+            'notifuser'=>$notifuser ,
+            'notifqa'=>$notifqa 
+        ]);
     }
 
     /**

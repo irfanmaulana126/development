@@ -17,6 +17,7 @@ $(document).on('click','#create-modul', function(ehead){
 	//.load(ehead.target.value);
 	.load($(this).attr('value'));
 });
+
 $.fn.modal.Constructor.prototype.enforceFocus = function(){};
 //$.fn.modal.prototype.constructor.Constructor.DEFAULTS.backdrop = 'static';	
 $(document).on('click','#modul-view', function(ehead){ 			  
@@ -25,6 +26,7 @@ $(document).on('click','#modul-view', function(ehead){
 	//.load(ehead.target.value);
 	.load($(this).attr('value'));
 });
+
 $.fn.modal.Constructor.prototype.enforceFocus = function(){};
 //$.fn.modal.prototype.constructor.Constructor.DEFAULTS.backdrop = 'static';	
 $(document).on('click','#open-ticket', function(ehead){ 			  
@@ -33,11 +35,21 @@ $(document).on('click','#open-ticket', function(ehead){
 	//.load(ehead.target.value);
 	.load($(this).attr('value'));
 });
+
 $.fn.modal.Constructor.prototype.enforceFocus = function(){};
 //$.fn.modal.prototype.constructor.Constructor.DEFAULTS.backdrop = 'static';	
 $(document).on('click','#change', function(ehead){ 			  
 	$('#change-modal').modal('show')
 	.find('#change-content').html('<i class=\"fa fa-2x fa-spinner fa-spin\"></i>')
+	//.load(ehead.target.value);
+	.load($(this).attr('value'));
+});
+
+$.fn.modal.Constructor.prototype.enforceFocus = function(){};
+//$.fn.modal.prototype.constructor.Constructor.DEFAULTS.backdrop = 'static';	
+$(document).on('click','#send-qa', function(ehead){ 			  
+	$('#send-qa-modal').modal('show')
+	.find('#send-qa-content').html('<i class=\"fa fa-2x fa-spinner fa-spin\"></i>')
 	//.load(ehead.target.value);
 	.load($(this).attr('value'));
 });
