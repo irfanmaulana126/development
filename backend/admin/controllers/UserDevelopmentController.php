@@ -9,6 +9,7 @@ use backend\admin\models\AppDetailKtg;
 use backend\admin\models\AppDetailKtgSearch;
 use backend\admin\models\OpenTicket;
 use backend\admin\models\OpenTicketSearch;
+use backend\admin\models\FeedbackQa;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -59,12 +60,16 @@ class UserDevelopmentController extends Controller
     {        
         $user = (empty(Yii::$app->user->identity->id)) ? '' : Yii::$app->user->identity->id;
         $dataProvider = UserDevelopmentSearch::findOne(['id'=>$user]);        
-        $searchModelKtg = new AppDetailKtgSearch();
-        $dataProviderKtg = $searchModelKtg->search(Yii::$app->request->queryParams);
+        $searchModeljobdesk = new OpenTicketSearch();
+        $dataProviderjobdesk = $searchModeljobdesk->search(Yii::$app->request->queryParams);
+        $searchModelpesan = new OpenTicketSearch();
+        $dataProviderpesan = $searchModelpesan->searchPesan(Yii::$app->request->queryParams);
         return $this->render('index', [
             'dataProvider' => $dataProvider,
-            'dataProviderKtg' => $dataProviderKtg,
-            'searchModelKtg' => $searchModelKtg,
+            'dataProviderjobdesk' => $dataProviderjobdesk,
+            'searchModeljobdesk' => $searchModeljobdesk,
+            'dataProviderpesan' => $dataProviderpesan,
+            'searchModelpesan' => $searchModelpesan,
         ]);
     }
 
@@ -117,46 +122,34 @@ class UserDevelopmentController extends Controller
         }
     }
 
-    public function actionCreateModul($id)
-    {
-        $model = new AppDetailKtg;
-
-        if ($model->load(Yii::$app->request->post())) {
-            $model->KODE_USER=$id;
-            // print_r($model);die();
-            $model->save();
-            return $this->redirect(['index']);
-        } else {
-            return $this->renderAjax('_form_create_modul', [
-                'model' => $model,
-            ]);
-        }
-    }
     public function actionViewModul($id)
     {
-        $model = AppDetailKtg::findOne($id);
+        $model = OpenTicketSearch::findOne($id);
         return $this->renderAjax('view_modul', [
             'model' => $model,
         ]);
     }
-    public function actionOpenTicket($id)
+    public function actionSendQa($id)
     {
-        $model = new OpenTicket;
-        $data = AppDetailKtg::findOne($id);
+        $data = OpenTicketSearch::findOne($id);
+        $model = new FeedbackQa;
+        $user = (empty(Yii::$app->user->identity->id)) ? '' : Yii::$app->user->identity->id;
         if ($model->load(Yii::$app->request->post())) {
-            $model->KODE_MODUL=$id;
-            $model->KODE_USER=Yii::$app->user->identity->id;
-            $model->API_KEY=Yii::$app->user->identity->auth_key;
-            // print_r($model);die();
+            $model->ID_USER=$user;
+            $model->ID_OPEN_TIKET=$id;
             $model->save(false);
+            $data->STATUS_QA=1;
+            $data->save(false);
             return $this->redirect(['index']);
-        } else {
-            return $this->renderAjax('_form_open_ticket', [
-                'model' => $model,
-                'data' => $data,
-            ]);
         }
+
+        return $this->renderAjax('_form_send_qa', [
+            'model' => $model,
+        ]);
     }
+    /**
+     * Function Change Password 
+     */
     public function actionChange($id)
     {
         $model =  UserDevelopment::findOne($id);

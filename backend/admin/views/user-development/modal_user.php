@@ -124,3 +124,24 @@ $this->registerCss("
 	]);
 		echo "<div id='change-content'></div>";
 	Modal::end();
+
+	Modal::begin([
+		'id' => 'send-qa-modal',
+		'header' => '
+			<span class="fa-stack fa-xs">																	
+				<i class="fa fa-circle fa-stack-2x " style="color:green"></i>
+				<i class="fa fa-money fa-stack-1x" style="color:#fbfbfb"></i>
+			</span><b> Konfirmasi QA</b>
+		',	
+		'size' => 'modal-md',
+		'options' => ['class'=>'slide'],
+		'headerOptions'=>[
+			'style'=> 'border-radius:5px; background-color:'.$modalHeaderColor,
+		],
+		'clientOptions' => [
+			'backdrop' => FALSE, //Static=disable, false=enable
+			'keyboard' => TRUE,	// Kyboard 
+		]
+	]);
+		echo "<div id='send-qa-content'></div>";
+	Modal::end();
