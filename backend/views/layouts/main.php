@@ -13,17 +13,22 @@ use yii\helpers\Url;
 use yii\web\View;
 AppAsset::register($this);
 
-
+// header("Strict-Transport-Security max-age=31536000");
+// echo "<b>HSTS Enabled!</b>";
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
 <head>
-    <meta  http-equiv="Content-Type"  http-equiv="Content-Type" content="text/html" charset="<?=Yii::$app->charset ?>">
+
+    <!--<meta  http-equiv="Content-Type"  http-equiv="Content-Type" content="text/html" charset="<?=Yii::$app->charset ?>"> !-->
+    <meta  http-equiv="Content-Type"  http-equiv="Content-Type" content="application/json" charset="<?=Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?=Html::csrfMetaTags() ?>
+	<!--<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
+	<meta http-equiv="Content-Security-Policy" content="default-src http://btob.kontrolgampang.com">!-->
+  <?=Html::csrfMetaTags() ?>
     <title><?php //= Html::encode($this->title) ?></title>
-	
+	<!--<object data="http://dev.api.aptmi.com/" type="application/text">  !-->
     <?php $this->head() ?>
 </head>
 <body>

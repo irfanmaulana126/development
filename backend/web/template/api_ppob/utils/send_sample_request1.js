@@ -92,41 +92,29 @@ define([
               }
           }
       });
-	  //console.log('ptr'+' ' + (JSON.stringify(param)));
-	  //console.log('ptr'+' ' + (JSON.stringify(param, null, 4)));
+
       // send AJAX request, catch success or error callback
-
       var ajaxRequest = {
-			url        : url,
-			headers    : header,  
-			data       : (JSON.stringify(param)),
-			async	   : true,
-			// xhrFields: {
-			// withCredentials: true
-			//  },
-			//traditional: true,
-			crossDomain:true,
-			cache: false,
-			dataType: "text",
-			//dataType: "json",
-			//dataType: 'JSONP',
-			type       : type.toUpperCase(),
-			success    : displaySuccess,
-			error      : displayError         
+          url        : url,
+          headers    : header,
+          data       : param,
+          type       : type.toUpperCase(),
+          success    : displaySuccess,
+          error      : displayError
       };
-	  
-      $.ajax(ajaxRequest);	
+
+      $.ajax(ajaxRequest);
 
 
-      function displaySuccess(data) {
+      function displaySuccess(data, status, jqXHR) {
           var jsonResponse;
           try {
-              jsonResponse = JSON.parse(data.responseText);
+              jsonResponse = JSON.parse(jqXHR.responseText);
               jsonResponse = JSON.stringify(jsonResponse, null, 4);
           } catch (e) {
-              jsonResponse = data.responseText;
+              jsonResponse = data;
           }
-          $root.find(".sample-request-response-json").html(data.responseText);
+          $root.find(".sample-request-response-json").html(jsonResponse);
           refreshScrollSpy();
       };
 
@@ -135,7 +123,7 @@ define([
           var jsonResponse;
           try {
               jsonResponse = JSON.parse(jqXHR.responseText);
-              jsonResponse = JSON.stringify(jqXHR, null, 4);
+              jsonResponse = JSON.stringify(jsonResponse, null, 4);
           } catch (e) {
               jsonResponse = escape(jqXHR.responseText);
           }

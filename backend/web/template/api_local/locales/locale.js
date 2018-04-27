@@ -1,18 +1,18 @@
 define([
-    'https://development.kontrolgampang.com/template/api_local/locales/ca.js',
-    'https://development.kontrolgampang.com/template/api_local/locales/de.js',
-    'https://development.kontrolgampang.com/template/api_local/locales/es.js',
-    'https://development.kontrolgampang.com/template/api_local/locales/fr.js',
-    'https://development.kontrolgampang.com/template/api_local/locales/it.js',
-    'https://development.kontrolgampang.com/template/api_local/locales/nl.js',
-    'https://development.kontrolgampang.com/template/api_local/locales/pl.js',
-    'https://development.kontrolgampang.com/template/api_local/locales/pt_br.js',
-    'https://development.kontrolgampang.com/template/api_local/locales/ro.js',
-    'https://development.kontrolgampang.com/template/api_local/locales/ru.js',
-    'https://development.kontrolgampang.com/template/api_local/locales/tr.js',
-    'https://development.kontrolgampang.com/template/api_local/locales/vi.js',
-    'https://development.kontrolgampang.com/template/api_local/locales/zh.js',
-    'https://development.kontrolgampang.com/template/api_local/locales/zh_cn.js'
+    'https://btob.kontrolgampang.com/locales/ca.js',
+    'https://btob.kontrolgampang.com/locales/de.js',
+    'https://btob.kontrolgampang.com/locales/es.js',
+    'https://btob.kontrolgampang.com/locales/fr.js',
+    'https://btob.kontrolgampang.com/locales/it.js',
+    'https://btob.kontrolgampang.com/locales/nl.js',
+    'https://btob.kontrolgampang.com/locales/pl.js',
+    'https://btob.kontrolgampang.com/locales/pt_br.js',
+    'https://btob.kontrolgampang.com/locales/ro.js',
+    'https://btob.kontrolgampang.com/locales/ru.js',
+    'https://btob.kontrolgampang.com/locales/tr.js',
+    'https://btob.kontrolgampang.com/locales/vi.js',
+    'https://btob.kontrolgampang.com/locales/zh.js',
+    'https://btob.kontrolgampang.com/locales/zh_cn.js'
 ], function() {
     var langId = (navigator.language || navigator.userLanguage).toLowerCase().replace('-', '_');
     var language = langId.substr(0, 2);

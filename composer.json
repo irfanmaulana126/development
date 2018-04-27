@@ -21,7 +21,10 @@
         "ptrnov/yii2-postman4excel": "*",
         "kartik-v/yii2-widgets": "*",
         "kartik-v/yii2-label-inplace": "*",
-        "kartik-v/yii2-password": "@dev"
+        "kartik-v/yii2-password": "@dev",
+        "kartik-v/yii2-grid": "@dev",
+        "kartik-v/yii2-detail-view": "dev-maste",
+        "kartik-v/yii2-krajee-base": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

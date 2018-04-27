@@ -1,5 +1,10 @@
+#<IfModule mod_headers.c>
+#     Header set Strict-Transport-Security "max-age=10886400; includeSubDomains; preload"
+#</IfModule>
+<IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 #RewriteRule ^opt/nodejs/node_modules/views/(.*) http://localhost:8890/$1 [P]
 RewriteRule . index.php
+</IfModule>

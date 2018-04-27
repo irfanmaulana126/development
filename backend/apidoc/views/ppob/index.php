@@ -1,15 +1,32 @@
 <?php
+use yii;
 use yii\web\View;
-use backend\assets\Api_Ppob_Asset;
-Api_Ppob_Asset::register($this);
 
-	
+	use backend\assets\Api_Ppob_Asset;
+Api_Ppob_Asset::register($this);
+//$this->registerCssFile( Yii::getAlias('@app'). '/apidoc/views/ppob/bootstrap.min.css');
+// $this->registerCssFile('bootstrap.min.css');
+// $this->registerCssFile('prettify.css');
+// $this->registerCssFile('style.css');
+// $this->registerJsFile('jquery.min.js');
+// $this->registerJsFile('polyfill.js');
+// $this->registerJsFile('bootstrap.min.js');
+// unset($this->assetBundles['yii\bootstrap\BootstrapAsset']);
+// unset($this->assetBundles['yii\web\JqueryAsset']);
+// $this->registerJs($this->render('jquery.js'),View::POS_READY);
+// $this->registerJs($this->render('bootstrap.min.js'),View::POS_READY);	
+// $this->registerJs($this->render('jquery.min.js'),View::POS_READY);	
+
 ?>
-<!--
+
 <head>
-   <meta http-equiv="Content-Security-Policy" content="default-src https:; script-src https: 'unsafe-inline'; style-src https: 'unsafe-inline'"> 
+    <script type="text/javascript">
+	var prot = (("https:" == document.location.protocol) ? "https://" : "http://");
+		document.write(unescape("%3Cscript src='" + prot + "development.kontrolgampang.com/template/api_ppob/vendor/jquery.js' type='text/javascript' %3E%3C/script%3E"));
+	
+	</script>
 </head>
-!-->
+
 
 <script id="template-sidenav" type="text/x-handlebars-template">
 <nav id="scrollingNav">
