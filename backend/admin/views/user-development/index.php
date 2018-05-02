@@ -37,8 +37,8 @@ $gridviewpesan=$this->render('grid_view_pesan',[
     'searchModelpesan' => $searchModelpesan,
 ]);
 // print_r(count($dataProviderpesan));die();
-if(count($dataProviderpesan)>0){	
-   $notif ='<span class="label label-success">'.count($dataProviderpesan).'</span>';
+if($notifuser>0){	
+   $notif ='<span class="label label-success">'.$notifuser.'</span>';
  }else{
     $notif ='';
  }
