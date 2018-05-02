@@ -131,7 +131,7 @@ $this->registerCss("
 		'filterModel' => $searchModelpesan,
 		'columns'=>$gvAttProdakHargaItem,	
 		'rowOptions'   => function ($model, $key, $index, $grid) {
-            if($model['STATUS_QA'] == 4){
+            if($model['STATUS_QA'] == 4 || $model['STATUS_QA'] == 2){
                 return ['class' => 'success','ondblclick' => 'location.href="'.Url::to(["/admin/feedback-qa"]).'?id='.$model->ID.'"'];
             }else{			
 			$btnclick= ['ondblclick' => 'location.href="'.Url::to(["/admin/feedback-qa"]).'?id='.$model->ID.'"'];

@@ -59,8 +59,8 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $notifuser = OpenTicket::find()->where(['STATUS_QA'=>4,'STATUS'=>[0,1]])->count();;
-        $notifqa = OpenTicket::find()->where(['STATUS_QA'=>1,'STATUS'=>[0,1]])->count();;
+        $notifuser = OpenTicket::find()->where(['STATUS_QA'=>[4,2],'STATUS'=>[0,1]])->count();
+        $notifqa = OpenTicket::find()->where(['STATUS_QA'=>1,'STATUS'=>[0,1]])->count();
         return $this->render('index',[
             'notifuser'=>$notifuser ,
             'notifqa'=>$notifqa 

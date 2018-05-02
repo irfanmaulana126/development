@@ -149,7 +149,7 @@ class FeedbackQaController extends Controller
             $model->ID_OPEN_TIKET=$id;
             $model->save(false);
             $data->STATUS=1;
-            $data->STATUS_QA=1;
+            $data->STATUS_QA=4;
             $data->save(false);
             return $this->redirect(['/qualitycontrol/feedback-qa?id='.$id.'']);
         }
