@@ -36,7 +36,12 @@ $gridviewpesan=$this->render('grid_view_pesan',[
     'dataProviderpesan' => $dataProviderpesan,
     'searchModelpesan' => $searchModelpesan,
 ]);
-
+// print_r(count($dataProviderpesan));die();
+if($notifuser>0){	
+   $notif ='<span class="label label-success">'.$notifuser.'</span>';
+ }else{
+    $notif ='';
+ }
 $items = [
     [
         'label'=>'<i class="glyphicon glyphicon-home"></i> JOB DESK',
@@ -44,7 +49,7 @@ $items = [
         'active'=>true
     ],
     [
-        'label'=>'<i class="glyphicon glyphicon-envelope"></i> PESAN',
+        'label'=>'<i class="glyphicon glyphicon-envelope"></i> PESAN '.$notif,
         'content'=>$gridviewpesan
     ],
 ];

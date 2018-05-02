@@ -83,6 +83,7 @@ class OpenTicketSearch extends OpenTicket
             ->andFilterWhere(['like', 'KTG_NM', $this->ktgnmpesan])
             ->andFilterWhere(['like', 'MODUL_NM', $this->modulnmpesan])
             ->andFilterWhere(['like', 'API_KEY', $this->API_KEY]);
+        $query->orderBy(['KTG_NM'=>SORT_DESC,'STATUS_QA'=>SORT_ASC]);
 
         return $dataProvider;
     }

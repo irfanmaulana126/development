@@ -63,9 +63,11 @@ class UserDevelopmentController extends Controller
         $searchModeljobdesk = new OpenTicketSearch();
         $dataProviderjobdesk = $searchModeljobdesk->search(Yii::$app->request->queryParams);
         $searchModelpesan = new OpenTicketSearch();
-        $dataProviderpesan = $searchModelpesan->searchPesan(Yii::$app->request->queryParams);
+        $dataProviderpesan = $searchModelpesan->searchPesan(Yii::$app->request->queryParams);        
+        $notifuser = OpenTicket::find()->where(['STATUS_QA'=>[4,2],'STATUS'=>[0,1]])->count();
         return $this->render('index', [
             'dataProvider' => $dataProvider,
+            'notifuser' => $notifuser,
             'dataProviderjobdesk' => $dataProviderjobdesk,
             'searchModeljobdesk' => $searchModeljobdesk,
             'dataProviderpesan' => $dataProviderpesan,

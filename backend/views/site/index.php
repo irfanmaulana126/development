@@ -13,7 +13,7 @@ $data = $this->render('apidoc/index.html'); */
 <div class="site-index">
     <div class="body-content">
 		<div class="row">
-			<div class="col-md-12">
+			<div class="col-md-14">
 				<h4 class="page-head-line">README</h4>
 			</div>
 		</div>
@@ -58,9 +58,31 @@ $data = $this->render('apidoc/index.html'); */
 					</ul>
 				   
 				</div>
+				<div class="alert alert-warning">
+					 <strong> Instruksi Untuk Open Ticket:</strong>
+					<ol>
+						<li>
+						   Buka Menu Open Ticket Pilih modul yang akan diselsaikan Jika Belum ada Create terlebih dahulu. 
+						</li>
+						<li>
+						   Jika telah menyelsaikan case yang dipilih konfirmasi kepada QA\QC dengan kirim pesan sesuai case yang telah diselasikan.
+						</li>
+						<li>
+						   QA\QC akan mengecek pekerjaan anda dan jika case masih terdapat kekurangan makan QA\QC akan mengirimkan pesan berdasarkan case yang dikerjakan.
+						</li>
+						<li>
+						   Jika case telah selsai maka QA\QC Akan melakukan Close case pekerjaan pun selesai!!!.
+						</li>
+					</ol>
+				   
+				</div>
 			</div>           
             <div>   
-              		  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 text-center pad-top">
+			
+			<div class="col-lg-6">
+						  <div class="div-square">
+			<div class="row">			
+              		  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 text-center pad-top">
 						  <div class="div-square">
 								<a href="/apidoc/kg" >
 									<i class="fa fa-key fa-5x"></i>
@@ -69,7 +91,7 @@ $data = $this->render('apidoc/index.html'); */
 						  </div>                    
 					  </div> 
 					 
-					  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 text-center pad-top">
+					  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 text-center pad-top">
 						  <div class="div-square">
 							   <a href="/apidoc/ppob" >
 									<i class="fa fa-envelope-o fa-5x"></i>
@@ -77,7 +99,7 @@ $data = $this->render('apidoc/index.html'); */
 								</a>
 						  </div>                    
 					  </div>
-					  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 text-center pad-top">
+					  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 text-center pad-top">
 						  <div class="div-square">
 							   <a href="/apidoc/loket" >
 									<i class="fa fa-lightbulb-o fa-5x"></i>
@@ -85,7 +107,7 @@ $data = $this->render('apidoc/index.html'); */
 								</a>
 						  </div>
 					  </div>
-					  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 text-center pad-top">
+					  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 text-center pad-top">
 						  <div class="div-square">
 							   <a href="/apidoc/va" >
 									<i class="fa fa-money fa-5x"></i>
@@ -93,7 +115,19 @@ $data = $this->render('apidoc/index.html'); */
 								</a>
 						  </div>
 					  </div>
-					  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 text-center pad-top">
+					  </div>
+					  </div>
+					  <div class="div-square">
+					  <div class="row">					  
+					  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 text-center pad-top">
+						  <div class="div-square">
+							   <a href="/openticket/app-detail-ktg" >
+									<i class="fa fa-rocket fa-5x"></i>
+									<h4>Open Ticket</h4>
+								</a>
+						  </div>
+					  </div>
+					  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 text-center pad-top">
 						  <div class="div-square">
 							   <a href="/admin/user-development" >
 									<?php if($notifuser>0){?>							   
@@ -104,23 +138,7 @@ $data = $this->render('apidoc/index.html'); */
 								</a>
 						  </div>
 					  </div>
-					  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 text-center pad-top">
-						  <div class="div-square">
-							   <a href="blank.html" >
-									<i class="fa fa-comments-o fa-5x"></i>
-									<h4>Support</h4>
-								</a>
-						  </div>
-					  </div>
-					  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 text-center pad-top">
-						  <div class="div-square">
-							   <a href="/openticket/app-detail-ktg" >
-									<i class="fa fa-rocket fa-5x"></i>
-									<h4>Open Ticket</h4>
-								</a>
-						  </div>
-					  </div>
-					  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 text-center pad-top">
+					  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 text-center pad-top">
 						  <div class="div-square">
 							   <a href="/qualitycontrol/open-ticket" >
 									<?php if($notifqa>0){?>	
@@ -131,8 +149,21 @@ $data = $this->render('apidoc/index.html'); */
 								</a>
 						  </div>
 					  </div>
+					  </div>
+					  </div>					  
+					  <div class="row">
+					  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 text-center pad-top">
+						  <div class="div-square">
+							   <a href="blank.html" >
+									<i class="fa fa-comments-o fa-5x"></i>
+									<h4>Support</h4>
+								</a>
+						  </div>
+					  </div>
+					  </div>
 			</div>
         </div>
 
     </div>
+</div>
 </div>
