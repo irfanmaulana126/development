@@ -7,6 +7,10 @@ use dosamigos\ckeditor\CKEditor;
 /* @var $this yii\web\View */
 /* @var $model backend\admin\models\UserDevelopment */
 /* @var $form yii\widgets\ActiveForm */
+$this->registerCss("
+    #cke_1_contents{
+        height:100px;
+    }");
 ?>
 
 <div class="user-development-form">
@@ -14,11 +18,11 @@ use dosamigos\ckeditor\CKEditor;
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'DESKRIPSI')->widget(CKEditor::className(), [
-        'options' => ['rows' => 6],
-        'preset' => 'edvance'
+        'options' => ['rows' => 2, 'style'=>['height:120px']],
+        'preset' => 'edvance',
     ]) ?>
 
-    <div class="form-group">
+    <div class="form-group text-right">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
 
