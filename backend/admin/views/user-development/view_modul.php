@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use kartik\detail\DetailView;
+use yii\helpers\Url;
 ?>
 <div class="app-detail-ktg-view">
 <?php
@@ -96,3 +97,21 @@ echo DetailView::widget([
         ]);?>
         
 </div>
+<div class="form-group text-right">
+        <?php
+        $title= Yii::t('app','');
+        $url = Url::toRoute(['/admin/user-development/pdf?id='.$model['ID']]);
+        $options1 = [
+                    'id'=>'pdf',
+                    'class'=>"btn btn-xs",
+                    'title'=>'Print PDF',
+                    'target' => '_blank',	
+        ];
+        $icon1 = '<span class="fa-stack fa-lg text-left">
+                    <b class="fa fa-circle fa-stack-2x" style="color:red"></b>
+                    <b class="fa fa fa fa-file-pdf-o fa-stack-1x" style="color:white"></b>
+                    </span>
+                    ';
+                    $label1 = $icon1.' '.$title ;
+                    echo $content = Html::a($label1,$url,$options1); ?>
+    </div>

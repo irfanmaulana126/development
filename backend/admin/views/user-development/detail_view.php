@@ -1,6 +1,7 @@
 <?php
 
 use kartik\detail\DetailView;
+use yii\helpers\Url;
 echo DetailView::widget([
             'id'=>'dv-info',
             'model'=>$dataProvider,

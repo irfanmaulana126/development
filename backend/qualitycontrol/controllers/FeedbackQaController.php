@@ -9,7 +9,7 @@ use backend\qualitycontrol\models\OpenTicket;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use kartik\mpdf\Pdf;
 /**
  * FeedbackQaController implements the CRUD actions for FeedbackQa model.
  */
@@ -173,6 +173,56 @@ class FeedbackQaController extends Controller
      * @return FeedbackQa the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
+    public function actionPdf($id)
+    {
+		$searchModel = new FeedbackQaSearch(['ID_OPEN_TIKET'=>$id]);
+            $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+            $dataProviderJobdesk = OpenTicket::findOne(['ID'=>$id]);
+		$content= $this->renderPartial( 'print_pdf', [            
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'dataProviderJobdesk' => $dataProviderJobdesk,
+        ]);
+		$pdf = new Pdf([
+			// set to use core fonts only
+			'mode' => Pdf::MODE_CORE,
+			//'mime' => 'application/pdf',
+			// A4 paper format
+			'format' => Pdf::FORMAT_A4,
+			// portrait orientation
+			'orientation' => Pdf::ORIENT_PORTRAIT,
+			// stream to browser inline
+			'destination' => Pdf::DEST_BROWSER,
+			//'destination' => Pdf::DEST_FILE ,
+			// your html content input
+			'content' => $content,
+			// format content from your own css file if needed or use the
+			// enhanced bootstrap css built by Krajee for mPDF formatting
+			//D:\xampp\htdocs\advanced\lukisongroup\web\widget\pdf-asset
+			//'cssFile' => '@frontend/web/template/pdf-asset/kv-mpdf-bootstrap.min.css',
+			'cssFile' => '@vendor/kartik-v/yii2-mpdf/assets/kv-mpdf-bootstrap.min.css',
+			// any css to be embedded if required
+			'cssInline' => '.kv-heading-1{font-size:12px}',
+			 // set mPDF properties on the fly
+			'options' => [
+				'title' => 'Form Request Order',
+				'subject'=>'ro',
+				'autoScriptToLang' => true,
+			],
+			 // call mPDF methods on the fly
+			'methods' => [
+				'SetHeader'=>['Copyright@KG '.date("r")],
+				'SetFooter'=>['{PAGENO}'],
+			]
+		]);
+		/* KIRIM ATTACH emaiL */
+		//$to=['piter@lukison.com'];
+		//\Yii::$app->kirim_email->pdf($contentMailAttach,'PO',$to,'Purchase-Order',$contentMailAttachBody);
+	
+		// $pdf = Yii::$app->pdf;
+		// $pdf->content = $htmlContent;
+		return $pdf->render();
+    }
     protected function findModel($id)
     {
         if (($model = FeedbackQa::findOne($id)) !== null) {
