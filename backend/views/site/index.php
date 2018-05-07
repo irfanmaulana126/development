@@ -80,7 +80,41 @@ $data = $this->render('apidoc/index.html'); */
             <div>   
 			
 			<div class="col-lg-6">
+					  <div class="div-square text-center">
+					  Open Ticket
+					  <div class="row">					  
+					  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 text-center pad-top">
 						  <div class="div-square">
+							   <a href="/openticket/app-detail-ktg" >
+									<i class="fa fa-rocket fa-5x"></i>
+									<h4>Open Ticket</h4>
+								</a>
+						  </div>
+					  </div>
+					  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 text-center pad-top">
+						  <div class="div-square">
+							   <a href="/admin/user-development" >
+									<?php if($notifuser>0){?>							   
+										<span class="label label-success" style="float:right"><?=$notifuser?></span>
+									<?php } ?>							   
+									<i class="fa fa-user fa-5x"></i>
+									<h4>User </h4>
+								</a>
+						  </div>
+					  </div>
+					  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 text-center pad-top">
+						  <div class="div-square">
+							   <a href="/qualitycontrol/open-ticket" >
+									<?php if($notifqa>0){?>	
+										<span class="label label-success" style="float:right"><?=$notifqa?></span>
+									<?php } ?>
+									<i class="fa fa-bug fa-5x"></i>
+									<h4>QA / QC</h4>
+								</a>
+						  </div>
+					  </div>
+					  </div>
+					  </div>
 			<div class="row">			
               		  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 text-center pad-top">
 						  <div class="div-square">
@@ -115,43 +149,8 @@ $data = $this->render('apidoc/index.html'); */
 								</a>
 						  </div>
 					  </div>
-					  </div>
-					  </div>
-					  <div class="div-square">
-					  <div class="row">					  
-					  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 text-center pad-top">
-						  <div class="div-square">
-							   <a href="/openticket/app-detail-ktg" >
-									<i class="fa fa-rocket fa-5x"></i>
-									<h4>Open Ticket</h4>
-								</a>
-						  </div>
-					  </div>
-					  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 text-center pad-top">
-						  <div class="div-square">
-							   <a href="/admin/user-development" >
-									<?php if($notifuser>0){?>							   
-										<span class="label label-success" style="float:right"><?=$notifuser?></span>
-									<?php } ?>							   
-									<i class="fa fa-user fa-5x"></i>
-									<h4>User </h4>
-								</a>
-						  </div>
-					  </div>
-					  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 text-center pad-top">
-						  <div class="div-square">
-							   <a href="/qualitycontrol/open-ticket" >
-									<?php if($notifqa>0){?>	
-										<span class="label label-success" style="float:right"><?=$notifqa?></span>
-									<?php } ?>
-									<i class="fa fa-bug fa-5x"></i>
-									<h4>QA / QC</h4>
-								</a>
-						  </div>
-					  </div>
-					  </div>
 					  </div>					  
-					  <div class="row">
+					  <!-- <div class="row">
 					  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 text-center pad-top">
 						  <div class="div-square">
 							   <a href="blank.html" >
@@ -160,7 +159,7 @@ $data = $this->render('apidoc/index.html'); */
 								</a>
 						  </div>
 					  </div>
-					  </div>
+					  </div> -->
 			</div>
         </div>
 

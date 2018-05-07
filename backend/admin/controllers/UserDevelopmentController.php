@@ -13,6 +13,7 @@ use backend\admin\models\FeedbackQa;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use kartik\mpdf\Pdf;
 
 /**
  * UserDevelopmentController implements the CRUD actions for UserDevelopment model.
@@ -60,11 +61,11 @@ class UserDevelopmentController extends Controller
     {        
         $user = (empty(Yii::$app->user->identity->id)) ? '' : Yii::$app->user->identity->id;
         $dataProvider = UserDevelopmentSearch::findOne(['id'=>$user]);        
-        $searchModeljobdesk = new OpenTicketSearch();
+        $searchModeljobdesk = new OpenTicketSearch(['KODE_USER'=>Yii::$app->user->identity->id]);
         $dataProviderjobdesk = $searchModeljobdesk->search(Yii::$app->request->queryParams);
-        $searchModelpesan = new OpenTicketSearch();
+        $searchModelpesan = new OpenTicketSearch(['KODE_USER'=>Yii::$app->user->identity->id]);
         $dataProviderpesan = $searchModelpesan->searchPesan(Yii::$app->request->queryParams);        
-        $notifuser = OpenTicket::find()->where(['STATUS_QA'=>[4,2],'STATUS'=>[0,1]])->count();
+        $notifuser = OpenTicket::find()->where(['KODE_USER'=>Yii::$app->user->identity->id,'STATUS_QA'=>[4,2],'STATUS'=>[0,1]])->count();
         return $this->render('index', [
             'dataProvider' => $dataProvider,
             'notifuser' => $notifuser,
@@ -130,6 +131,52 @@ class UserDevelopmentController extends Controller
         return $this->renderAjax('view_modul', [
             'model' => $model,
         ]);
+    }
+    public function actionPdf($id)
+    {
+        $model = OpenTicketSearch::findOne($id);		
+		$content= $this->renderPartial( 'view_modul', [
+            'model' => $model,
+        ]);
+		$pdf = new Pdf([
+			// set to use core fonts only
+			'mode' => Pdf::MODE_CORE,
+			//'mime' => 'application/pdf',
+			// A4 paper format
+			'format' => Pdf::FORMAT_A4,
+			// portrait orientation
+			'orientation' => Pdf::ORIENT_PORTRAIT,
+			// stream to browser inline
+			'destination' => Pdf::DEST_BROWSER,
+			//'destination' => Pdf::DEST_FILE ,
+			// your html content input
+			'content' => $content,
+			// format content from your own css file if needed or use the
+			// enhanced bootstrap css built by Krajee for mPDF formatting
+			//D:\xampp\htdocs\advanced\lukisongroup\web\widget\pdf-asset
+			//'cssFile' => '@frontend/web/template/pdf-asset/kv-mpdf-bootstrap.min.css',
+			'cssFile' => '@vendor/kartik-v/yii2-mpdf/assets/kv-mpdf-bootstrap.min.css',
+			// any css to be embedded if required
+			'cssInline' => '.kv-heading-1{font-size:12px}',
+			 // set mPDF properties on the fly
+			'options' => [
+				'title' => 'Form Request Order',
+				'subject'=>'ro',
+				'autoScriptToLang' => true,
+			],
+			 // call mPDF methods on the fly
+			'methods' => [
+				'SetHeader'=>['Copyright@KG '.date("r")],
+				'SetFooter'=>['{PAGENO}'],
+			]
+		]);
+		/* KIRIM ATTACH emaiL */
+		//$to=['piter@lukison.com'];
+		//\Yii::$app->kirim_email->pdf($contentMailAttach,'PO',$to,'Purchase-Order',$contentMailAttachBody);
+	
+		// $pdf = Yii::$app->pdf;
+		// $pdf->content = $htmlContent;
+		return $pdf->render();
     }
     public function actionSendQa($id)
     {

@@ -75,6 +75,7 @@ echo DetailView::widget([
                             'value'=>(empty($dataProviderJobdesk['DESKRIPSI']))?'':$dataProviderJobdesk['DESKRIPSI'],
                             'enableEditMode'=>false,
                             'displayOnly'=>true,
+                            'format'=>'html',
                             'valueColOptions'=>['style'=>'width:80%']
                         ],
                     ],
