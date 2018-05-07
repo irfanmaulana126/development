@@ -24,17 +24,10 @@ AppAsset::register($this);
     <!--<meta  http-equiv="Content-Type"  http-equiv="Content-Type" content="text/html" charset="<?=Yii::$app->charset ?>"> !-->
     <meta  http-equiv="Content-Type"  http-equiv="Content-Type" content="application/json" charset="<?=Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<<<<<<< HEAD
-	<!--<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
-	<meta http-equiv="Content-Security-Policy" content="default-src http://btob.kontrolgampang.com">!-->
-  <?=Html::csrfMetaTags() ?>
-    <title><?php //= Html::encode($this->title) ?></title>
-	<!--<object data="http://dev.api.aptmi.com/" type="application/text">  !-->
-=======
+   <!--<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
+   <meta http-equiv="Content-Security-Policy" content="default-src http://btob.kontrolgampang.com">!-->
     <?=Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
-	
->>>>>>> 7a9b4cefb6c4b472867cea0ebb4e0066154eefc3
     <?php $this->head() ?>
 </head>
 <body>

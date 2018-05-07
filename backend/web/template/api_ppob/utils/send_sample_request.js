@@ -92,43 +92,20 @@ define([
               }
           }
       });
-	  //console.log('ptr'+' ' + (JSON.stringify(param)));
-	  console.log('parameter'+' ' + (JSON.stringify(param, null, 2)));
-	 // console.log('ptr'+' ' + (JSON.stringify(header, null, 2)));
+console.log('parameter'+' ' + JSON.stringify(param));
       // send AJAX request, catch success or error callback
-
       var ajaxRequest = {
-		   // async	   : true,
-			//crossDomain:true,
-			url        : url,
-			headers    : header,  
-			data       : param,//(JSON.stringify(param)),
-			//xhr			: function(){
-			//	  var xhr = new window.XMLHttpRequest();
-			//	  xhr.withCredentials = true;
-
-	//				xhr.addEventListener("readystatechange", function () {
-		//			  if (this.readyState === 4) {
-			//			console.log(this.responseText);
-				//	  }
-					//});
-				  //return xhr;	
-			//},
-			// xhrFields: {
-			// withCredentials: true
-			//  },
-			//traditional: true,
-			
-			//cache: false,
-			//dataType: "text",
-			//dataType: "json",
-			//dataType: 'JSONP',
-			type       : type.toUpperCase(),
-			success    : displaySuccess,
-			error      : displayError         
+	async	   	: true,
+	crossDomain	: true,
+          url        	: url,
+          headers    : header,
+          data       : param,
+          type       : type.toUpperCase(),
+          success    : displaySuccess,
+          error      : displayError
       };
-	  
-      $.ajax(ajaxRequest);	
+
+      $.ajax(ajaxRequest);
 
 
       function displaySuccess(data, status, jqXHR) {
@@ -142,14 +119,13 @@ define([
           $root.find(".sample-request-response-json").html(jsonResponse);
           refreshScrollSpy();
       };
-	  
 
       function displayError(jqXHR, textStatus, error) {
           var message = "Error " + jqXHR.status + ": " + error;
           var jsonResponse;
           try {
               jsonResponse = JSON.parse(jqXHR.responseText);
-              jsonResponse = JSON.stringify(jqXHR, null, 4);
+              jsonResponse = JSON.stringify(jsonResponse, null, 4);
           } catch (e) {
               jsonResponse = escape(jqXHR.responseText);
           }
