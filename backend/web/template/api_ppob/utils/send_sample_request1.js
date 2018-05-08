@@ -92,12 +92,10 @@ define([
               }
           }
       });
-console.log('parameter'+' ' + JSON.stringify(param));
+
       // send AJAX request, catch success or error callback
       var ajaxRequest = {
-	async	   	: true,
-	crossDomain	: true,
-          url        	: url,
+          url        : url,
           headers    : header,
           data       : param,
           type       : type.toUpperCase(),

@@ -966,7 +966,7 @@ define({ "api": [
             "type": "Integer",
             "optional": false,
             "field": "TAHUN",
-            "description": "<p>empat digit &quot;2018&quot;.</p>"
+            "description": "<p>empat digit, &quot;2018&quot;.</p>"
           },
           {
             "group": "Parameter",
